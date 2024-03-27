@@ -18,7 +18,7 @@
             margin-top:273px;
         }
         .div_principal{
-            background-color: #DAF7FF ;
+            background-color: #432075 ;
             width: 600px;
             height: 400px;
             border-radius: 20px;
