@@ -11,6 +11,27 @@
             background-image:url('fundo.png');
             
         }
+
+        h3 {
+            font-size: 25px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #102B7B;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 85px;
+        }
+
+        form {
+            position: absolute;
+            top: 130px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        
+        }
+        
+
         .divPrincipal {
             background-color: #DAF7FF;
             width: 600px;
@@ -30,43 +51,36 @@
             height: 100px;
         }
 
-        h4 {
-            font-size: 16px;
-            font-family: 'Times New Roman', Times, serif;
-            color: #432075;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 95px;
-        }
-
-        form {
-            text-align: left;
-            position: absolute;
-            top: 130px;
-        }
-        
-        form input[type="text"],
-        form input[type="password"] {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            background-color: #ffffff; 
-            font-family: 'Times New Roman', Times, serif;
-        }
         
         .custom-btn {
             width: 100%;
-            background-color: #F39337;
-            border-color: #F39337;
-            color: #432075;
+            background-color: #43ADDA;
+            border-color: #43ADDA;
+            color: #102B7B;
             font-weight: bold;
         }
         .custom-btn:hover {
             background-color: #102B7B; 
         }
 
+        .form-floating{
+            width: 100%;
+            padding-top: 0px; 
+            padding-bottom: 0px;
+        }
+        .form-control{
+            width: 100%;
         
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-row > div {
+            flex: 1;
+        }
 
     </style>
 
@@ -74,13 +88,29 @@
 <body>
 
     <div class="divPrincipal">
-        <img src="{{asset('logo2.png')}}" alt="logo" class="img_logo">
-        <h4>Cadastro</h4>
+        <img src="{{asset('logo.png')}}" alt="logo" class="img_logo">
+        <h3>Cadastro</h3>
         <form action="">
-            <input class="form-control" type="text" placeholder="Nome completo:" aria-label="default input example">
-            <input class="form-control" type="text" placeholder="CPF:" aria-label="default input example">
-            <input class="form-control" type="text" placeholder="Email:" aria-label="default input example">
-            <input type="password" placeholder="Senha:" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+            <div class="form-row">
+                <div class="form-floating mb-2">
+                    <input type="name" class="form-control" id="floatingInput" placeholder="Nome Completo">
+                    <label for="floatingInput">Nome completo:</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="name" class="form-control" id="floatingInput" placeholder="CPF">
+                    <label for="floatingInput">CPF:</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-floating mb-2">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Email">
+                    <label for="floatingInput">Email:</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                    <label for="floatingPassword">Senha:</label>
+                </div>
+            </div>
             <a href="#"><button class="btn btn-primary custom-btn" type="button">Cadastrar</button></a>
         </form>
     </div>
