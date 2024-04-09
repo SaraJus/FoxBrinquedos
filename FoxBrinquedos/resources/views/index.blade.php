@@ -28,7 +28,7 @@
         }
 
         .line {
-            background-color: #7F01F5;
+            background-color: #43adda;
             width: 100%;
             height: 35px;
         }
@@ -44,21 +44,21 @@
 
         .sale {
             background-color: #6ad7f4;
-            width: 500px;
-            height: 350px;
+            width: 650px;
+            height: 400px;
             border-radius: 15px;
         }
 
         .sale1 {
             background-color: #102b7b;
-            width: 250px;
-            height: 171px;
+            width: 300px;
+            height: 196px;
             border-radius: 15px;
         }
 
         .card {
-            height: 250px;
-            width: 175px;
+            height: 300px;
+            width: 225px;
             border-radius: 15px;
             background-color: #444;
         }
@@ -110,7 +110,7 @@
         }
 
         footer {
-            background-color: #fb9938;
+            background-color: #43adda;
             width: 100%;
             height: 200px;
             border-top-right-radius: 35px;
@@ -118,9 +118,8 @@
         }
 
         .imgFooter {
-            width: 120px;
-            height: 120px;
-            top: 40px;
+            width: 200px;
+            height: 200px;
             left: 25px;
             position: relative;
         }
@@ -138,9 +137,11 @@
         }
 
         .pagamento {
-            position: relative;
-            left: 1300px;
-            top: 25px;
+            position: absolute;
+            padding-left: 1300px;
+            margin-top: 40px;
+            margin-right: 40px;
+            right: 0px;
         }
 
         .pagamentoImg {
@@ -179,7 +180,7 @@
             </div>
             <div class="navbar navbar-light">
                 <form class="form-inline nav-search" >
-                    <img src="{{asset('logo2.png')}}" alt="Logo" class="logo">
+                    <img src="{{asset('logo.png')}}" alt="Logo" class="logo">
                     <input class="form-control me-2 " type="search" placeholder="Pesquisar" aria-label="Search" style=" width:326px; ">
                     <i class="btn btn-custom fa fa-search" type="submit"></i>
                 </form>
@@ -191,7 +192,7 @@
             <hr>
             <div class="d-flex justify-content-center mb-3 mt-3 navBar">
                 <a class="d-flex mr-3" href="">HOME</a>
-                <a class="d-flex mr-3" href="">BRINQUEDOS</a>
+                <a class="d-flex mr-3" href="{{asset('produto')}}">BRINQUEDOS</a>
                 <a class="d-flex mr-3" href="">CATEGORIA</a>
                 <a class="d-flex mr-3" href="">CONTATO</a>
             </div>
@@ -252,13 +253,13 @@
         <section class="d-flex justify-content-center mb-5 desconto">
             <p class="mr-3 mt-5">Descontos</p>
             <p class="mr-3 mt-5">Brindes Surpresas</p>
-            <img src="{{asset('selo.png')}}" alt="" class="mr-3 logo1">
+            <img src="{{asset('logo.png')}}" alt="" class="mr-3 logo1">
             <p class="mr-3 mt-5">Frete Gratis</p>
             <p class="mr-3 mt-5">Rápida Entrega</p>
         </section>
     </div>
     <footer class="d-flex">
-        <img class="imgFooter" src="{{asset('fox.png')}}" alt="">
+        <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
         <div class="redesSociais">
             <p>Acompanhe nossas redes sociais</p>
             <div class="d-flex">
