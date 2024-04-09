@@ -15,7 +15,7 @@
             justify-content: center;
             top: 50%;
             left: 50%;
-            margin-top:273px;
+            margin-top:180px;
         }
         .div_principal{
             background-color: #DAF7FF ;
@@ -52,19 +52,19 @@
 
         .custom-btn {
             width: 50%;
-            background-color: #F39337;
-            border-color: #F39337;
-            color: #432075;
+            background-color: #43ADDA;
+            border-color: #43ADDA;
+            color: #102B7B;
             font-weight: bold;
         }
         .custom-btn:hover {
-            background-color: #102B7B; 
+            background-color: #102B7B;
         }
 
-            h4 {
-            font-size: 16px;
-            font-family: 'Times New Roman', Times, serif;
-            color: #432075;
+            h3 {
+            font-size: 25px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #102B7B;
             align-items: center;
             justify-content: center;
             margin-top:-20px;
@@ -83,15 +83,15 @@
         
        
        <div class="logo_login">
-            <img src="{{asset('logo2.png')}}" alt="logo" class="img_logo">
+            <img src="{{asset('logo.png')}}" alt="logo" class="img_logo">
         </div>
-        <h4>Login</h4>
+        <h3>Login</h3>
         <input class="form-control" type="text" placeholder="Email:" aria-label="default input example">
         <input type="password" placeholder="Senha:" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
 
         <button class="btn btn-primary custom-btn" type="button">Entrar</button>
 
-        <a href="#" class="btn_cadastrar">CADASTRE-SE</a>
+        <a href="cadastro" class="btn_cadastrar">CADASTRE-SE</a>
     </div>
 
     </form>
