@@ -21,7 +21,7 @@
             font-size: 30px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
-     
+
 
         .line {
             background-color: #43ADDA;
@@ -98,7 +98,7 @@
             font-size: 20px;
             gap: 40px;
             color: #102B7B;
-        } 
+        }
         .navBar :hover{
             color:#43ADDA;
         }
@@ -127,13 +127,13 @@
 
         .card{
             background-color: white;
-            margin: 40px;
             align-items: center;
+
         }
-        
 
 
-        
+
+
 
     </style>
 </head>
@@ -166,7 +166,7 @@
     </header>
     <h2>Brinquedos</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    @foreach($produtos as $produto) 
+    @foreach($produtos as $produto)
         <div class="col">
             <div class="card">
                 @if($produto->Imagem->isNotEmpty())
@@ -184,7 +184,7 @@
 </div>
 
 
-    
+
 
 
 
