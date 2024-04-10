@@ -17,7 +17,10 @@ Route::get ('produto', [ProdutoController::class, 'produto'])->name('produto.ind
 
 Route::get ('carrinho', [CarrinhoController::class, 'carrinho'])->name('carrinho.index');
 
-Route::get ('produto', [ProdutoController::class, 'show'])->name('show');
+Route::get ('produto', [ProdutoController::class, 'produto'])->name('produto.index');
+
+Route::get ('show', [ProdutoController::class, 'show'])->name('show.index');
+
 
 
 
