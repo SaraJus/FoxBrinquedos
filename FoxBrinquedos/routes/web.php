@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CadastroController;
-use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\BrinquedoController;
 
 Route::get ('index', [IndexController::class, 'index'])->name('index');
 
@@ -15,5 +15,6 @@ Route::get ('TelaLogin', [LoginController::class, 'TelaLogin'])->name('Login.ind
 
 Route::get ('produto', [ProdutoController::class, 'produto'])->name('produto.index');
 
-Route::get ('carrinho', [CarrinhoController::class, 'carrinho'])->name('carrinho.index');
+Route::get ('brinquedo', [BrinquedoController::class, 'brinquedo'])->name('brinquedo.index');
 
+    

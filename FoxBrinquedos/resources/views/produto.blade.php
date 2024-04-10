@@ -21,12 +21,7 @@
             font-size: 30px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
-        .sessoes {
-            /* background-image: url(fundo.png);
-            background-size: 100%;
-            opacity: 0.2;
-            */
-        }
+     
 
         .line {
             background-color: #43ADDA;
