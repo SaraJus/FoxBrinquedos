@@ -170,6 +170,7 @@
         </nav>
     </header>
     <h2>Brinquedos</h2>
+<div class="d-flex justify-content-center">
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach($produtos as $produto) 
         <div class="col">
@@ -186,6 +187,7 @@
             </div>
         </div>
     @endforeach
+</div>
 </div>
 
 
