@@ -7,7 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProdutoController;
 
-Route::get ('index', [IndexController::class, 'index'])->name('index');
+Route::get ('', [IndexController::class, 'index'])->name('index');
 
 Route::get('cadastro',[CadastroController::class,'cadastro'])->name('cadastro.index');
 
