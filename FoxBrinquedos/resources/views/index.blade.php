@@ -22,14 +22,13 @@
         hr {
             border-color: #432075;
         }
-
-        .sessoes {
-            /* background-image: url(fundo.png);
+      /*    .sessoes {
+           background-image: url(fundo.png);
             background-size: 100%;
             opacity: 0.2;
-            */
+            
         }
-
+*/
         .line {
             background-color: #43adda;
             width: 100%;

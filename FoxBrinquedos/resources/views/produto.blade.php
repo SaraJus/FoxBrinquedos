@@ -21,12 +21,7 @@
             font-size: 30px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
-        .sessoes {
-            /* background-image: url(fundo.png);
-            background-size: 100%;
-            opacity: 0.2;
-            */
-        }
+
 
         .line {
             background-color: #43ADDA;
@@ -103,7 +98,7 @@
             font-size: 20px;
             gap: 40px;
             color: #102B7B;
-        } 
+        }
         .navBar :hover{
             color:#43ADDA;
         }
@@ -132,13 +127,13 @@
 
         .card{
             background-color: white;
-            margin: 40px;
             align-items: center;
+
         }
-        
 
 
-        
+
+
 
     </style>
 </head>
@@ -172,7 +167,7 @@
     <h2>Brinquedos</h2>
 <div class="d-flex justify-content-center">
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    @foreach($produtos as $produto) 
+    @foreach($produtos as $produto)
         <div class="col">
             <div class="card">
                 @if($produto->Imagem->isNotEmpty())
@@ -191,7 +186,7 @@
 </div>
 
 
-    
+
 
 
 
