@@ -11,10 +11,10 @@ class Produto extends Model
     protected $table = "PRODUTO";
     protected $primaryKey = "PRODUTO_ID";
 
-    public $fillable = ['PRODUTO_NOME','PRODUTO_DESC'];
+    public $fillable = ['PRODUTO_NOME','PRODUTO_DESC','PRODUTO_PRECO'];
 
     public function Imagem(){
         return $this->hasMany(Imagem::class,'PRODUTO_ID','PRODUTO_ID');
     }
-
+   
 }
