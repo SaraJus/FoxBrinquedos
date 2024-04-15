@@ -24,9 +24,16 @@ Route::get ('show', [ProdutoController::class, 'show'])->name('produto.show');
 
 
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get ('produto', [ProdutoController::class, 'produto'])->name('produto.index');
+
+Route::get ('show', [ProdutoController::class, 'show'])->name('show.index');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -26,4 +26,21 @@ class User extends Authenticatable
         'USUARIO_SENHA'
     ];
 
+
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+        
+
+
 }
