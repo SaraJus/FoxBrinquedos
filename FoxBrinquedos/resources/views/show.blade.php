@@ -13,7 +13,6 @@
             height: 100vh;
             width: 100%;
 
-            
         }
         
         .line{
@@ -80,6 +79,19 @@
         text-align: center;
         justify-content: center;
         cursor: pointer;
+        border: 1px solid bisque;
+    }
+    .oval{
+        width: 60px;
+        height: 30px;
+        border-radius: 200px;
+        background-color: bisque;
+        color: black;
+        display: flex;
+
+        text-align: center;
+        justify-content: center;
+        cursor: pointer;
     }
     .adicionar{
         background-color: orange;
@@ -99,14 +111,41 @@
         margin-left: 330px;
         border-radius: 10px;
     }
+    .card_produto{
+        margin-left: 300px;
+        border: none;
+        height: 400px;
+        width: 1000px;
+        margin-top: 30px;
+    
+    }
+    .card_produto img{
+        width: 300px;
+        padding-bottom: 20px;
+    }
+
+    .btn_adicionar{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .card-body2{
+        width: 1000px;
+        height: 200px;
+        background-color: bisque;
+        margin-left: -17px;
+        border-radius: 5px;
+        gap: 30px;
+        margin-top: 20px;
+    }
+    
+
+    
     </style>
 </head>
 <body>
 
-
-@foreach($produto->Imagem as $img) 
-<img src="{{$img -> IMAGEM_URL}}" alt="">
-@endforeach
 
 <header>
         <nav class="">
@@ -132,25 +171,39 @@
             <hr>
         </nav>
     </header>
+    
     <h2>PRODUTO</h2>
-    <div class="img_produto">IMAGEM
-
-    <div class="info_produto">
-        <p class="text_desc">Pelúcia Básica - 23Cm - Disney - Frozen 2 - Salamandra Bruni - Fun</p>
-        <p class="preco">Preço: </p>
-        <p class="preco">Desconto: </p>
-    </div>
-    <div class="pagamentos">
-        <div class="circulo">-</div>
-        <div class="oval">QTD</div>
-        <div class="circulo">+</div>
-        <div class="adicionar"> Adicionar</div> 
-    </div>
-
-    
-    <div class="descricao">
-        <p>Descrição:</p>
+    <div class="card_produto">
+    <div class="card mb-2" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://cdn.awsli.com.br/600x450/2437/2437567/produto/180351318/da5927af89.jpg" class="img-fluid rounded-start" alt="...">
     </div>
     
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-title">Pelúcia Básica - 23Cm - Disney - Frozen 2 - Salamandra Bruni - Fun</p>
+        <p class="card-text"><small class="text-body-secondary">Preço: </small></p>
+        <p class="card-text"><small class="text-body-secondary">Desconto: </small></p>
+
+        <div class="btn_adicionar">
+            <button class="circulo">+</button>
+            <div class="oval">1</div>
+            <button class="circulo">-</button>
+        </div>
+
+      </div>
+
+  </div>
+  
+  </div>
+</div>
+
+<div class="col-md-8">
+      <div class="card-body2">
+        <p class="card-title">Descricap</p>
+      </div>
+
+  </div>
 </body>
 </html>
