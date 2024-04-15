@@ -43,12 +43,15 @@
             color: #432075;
         }
 
+        .btn_cadastrar{
+            margin-bottom: 15px;
+        }
+
         .custom-btn {
-<<<<<<< HEAD
+
             width: 400px;
-=======
             width: 50%;
->>>>>>> a37b926913bf3220a0fc80a5e0ef27f0ee2cad75
+
             background-color: #43ADDA;
             border-color: #43ADDA;
             color: #102B7B;
@@ -87,7 +90,7 @@
        <div class="logo_login">
             <img src="{{asset('logo.png')}}" alt="logo" class="img_logo">
         </div>
-<<<<<<< HEAD
+
         <h4>Login</h4>
         <div class="form-floating mb-2">
                     <input type="email" class="form-control" id="floatingInput" placeholder="Email">
@@ -97,11 +100,6 @@
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
                     <label for="floatingPassword">Senha:</label>
                 </div>
-=======
-        <h3>Login</h3>
-        <input class="form-control" type="text" placeholder="Email:" aria-label="default input example">
-        <input type="password" placeholder="Senha:" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
->>>>>>> a37b926913bf3220a0fc80a5e0ef27f0ee2cad75
 
         <button class="btn btn-primary custom-btn" type="button">Entrar</button>
 

@@ -11,7 +11,7 @@ class ProdutoController extends Controller
         return view('produto')->with('produtos', Produto::all());
     }
 
-    public function show(Produto $produto){
-        return view('show')->with('produto', $produto);
+    public function show(){
+        return view('show')->with('show');
     }
 }
