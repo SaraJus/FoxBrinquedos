@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 class ProdutoController extends Controller
 {
     public function produto(){
-        return view('produto')->with('produtos', Produto::all());
+        return view('produto')->with('produtos', Produto::paginate(10));
     }
 
     public function show(){
         return view('show')->with('show');
     }
+    
 
 
 
