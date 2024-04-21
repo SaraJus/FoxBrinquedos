@@ -90,17 +90,20 @@
     <div class="divPrincipal">
         <img src="{{asset('logo.png')}}" alt="logo" class="img_logo">
         <h3>Cadastro</h3>
-        <form action="">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+
             <div class="form-row">
                 <div class="form-floating mb-2">
                     <input type="name" class="form-control" id="floatingInput" placeholder="Nome Completo">
                     <label for="floatingInput">Nome completo:</label>
                 </div>
+                </div>
                 <div class="form-floating mb-2">
                     <input type="name" class="form-control" id="floatingInput" placeholder="CPF">
                     <label for="floatingInput">CPF:</label>
                 </div>
-            </div>
+            
             <div class="form-row">
                 <div class="form-floating mb-2">
                     <input type="email" class="form-control" id="floatingInput" placeholder="Email">
@@ -111,7 +114,7 @@
                     <label for="floatingPassword">Senha:</label>
                 </div>
             </div>
-            <a href="#"><button class="btn btn-primary custom-btn" type="button">Cadastrar</button></a>
+            <a href=" {{ route('index') }}"><button class="btn btn-primary custom-btn" type="button">Cadastrar</button></a>
         </form>
     </div>
 </body>

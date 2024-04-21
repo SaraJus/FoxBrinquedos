@@ -17,7 +17,7 @@ class RegisteredUserController extends Controller
 
     public function create(): View
     {
-        return view('auth.register');
+        return view('cadastro');
     }
 
     public function store(Request $request): RedirectResponse
@@ -34,6 +34,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('index', absolute: false));
     }
 }

@@ -158,6 +158,10 @@
             top:-2px;
             border-bottom:2px solid #102B7B;
         }
+        .pagination {
+            justify-content: center;
+        }
+        
 
     </style>
 </head>
@@ -207,6 +211,10 @@
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        {{$produtos ->onEachSide(0)->links()}}
     </div>
     
     <footer class="d-flex">
