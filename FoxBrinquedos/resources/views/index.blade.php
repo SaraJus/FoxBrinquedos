@@ -9,25 +9,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        html {
+        html{
             margin: 0%;
             padding: 0%;
         }
-
         body {
             margin: 0%;
             padding: 0%;
         }
-
-        hr {
+        hr{
             border-color: #432075;
         }
-
-        /*    .sessoes {
+      /*    .sessoes {
            background-image: url(fundo.png);
             background-size: 100%;
             opacity: 0.2;
-            
+
         }
 */
         .line {
@@ -97,13 +94,13 @@
             gap: 120px;
         }
 
-        .nomeCat :hover {
+        .nomeCat :hover{
 
             text-decoration-line: none;
 
         }
 
-        .nomeCat :visited {
+        .nomeCat :visited{
             color: #432075;
         }
 
@@ -163,7 +160,7 @@
             text-decoration-line: none;
         }
 
-        .navBar :hover {
+        .navBar :hover{
             color: #432075;
 
         }
@@ -171,6 +168,8 @@
         .navBar :visited {
             color: #432075;
         }
+
+
     </style>
 </head>
 
@@ -180,7 +179,7 @@
             <div class="line">
             </div>
             <div class="navbar navbar-light">
-                <form class="form-inline nav-search">
+                <form class="form-inline nav-search" >
                     <img src="{{asset('logo.png')}}" alt="Logo" class="logo">
                     <input class="form-control me-2 " type="search" placeholder="Pesquisar" aria-label="Search" style=" width:326px; ">
                     <i class="btn btn-custom fa fa-search" type="submit"></i>
@@ -206,10 +205,10 @@
             <img src="{{asset('promocao.png')}}" class="sale mr-5 ">
             <div>
                 <div>
-                    <img src="{{asset('promocao2.png')}}" class="sale1 mb-2">
+                <img src="{{asset('promocao2.png')}}" class="sale1 mb-2">
                 </div>
                 <div>
-                    <img src="{{asset('promocao3.png')}}" class="sale1">
+                <img src="{{asset('promocao3.png')}}" class="sale1">
                 </div>
             </div>
 

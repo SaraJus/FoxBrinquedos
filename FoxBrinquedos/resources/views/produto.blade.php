@@ -10,24 +10,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
 
-    body, html {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; 
-    }
-
         hr{
             border-color: #102B7B;
         }
         h2{
-            color: #432075;
-            text-align: center;
+            color: #102B7B;
+            align-items: center;
+            justify-content: center;
+            display: flex;
             font-size: 30px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
 
+
         .line {
             background-color: #43ADDA;
+            width: 100%;
             height: 35px;
         }
 
@@ -41,7 +39,7 @@
         }
 
         .card {
-            height: auto;
+            height: 250px;
             width: 175px;
             border-radius: 15px;
             background-color: #444;
@@ -53,6 +51,7 @@
 
         footer {
             background-color: #43adda;
+            width: 100%;
             height: 200px;
             border-top-right-radius: 35px;
             border-top-left-radius: 35px;
@@ -61,11 +60,14 @@
         .imgFooter {
             width: 200px;
             height: 200px;
+            left: 25px;
             position: relative;
         }
 
         .redesSociais {
             position: relative;
+            top: 25px;
+            left: 60px;
             height: 150px;
         }
 
@@ -76,6 +78,7 @@
 
         .pagamento {
             position: absolute;
+            padding-left: 1300px;
             margin-top: 40px;
             margin-right: 40px;
             right: 0px;
@@ -95,81 +98,51 @@
             font-size: 20px;
             gap: 40px;
             color: #102B7B;
-            text-align: center;
         }
-        .navBar a:hover{
+        .navBar :hover{
             color:#43ADDA;
         }
 
-        .navBar a:visited{
+        .navBar:visited{
             color: #102B7B;
         }
 
         .card-img-top{
             width: 150px;
             height: 150px;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            margin-left: 10px;
-            margin-top: 5px;
+
         }
         .card-title{
-        font-size: 12px; 
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        padding: 2px;
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        max-width: 150px; 
+            font-size: 15px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .card-text{
-            font-size: 14px;
+            font-size: 12px;
             font-family: 'Times New Roman', Times, serif;
-            display: flex;
-            padding-left: 5px;
-            margin-top: 2px;
-
+            margin: 0;
         }
 
         .card{
             background-color: white;
-            text-align: center;
-            margin: 10px;
-        }
-        .card-preco{
-            color: #432075;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: 18px;
-            display: flex;
             align-items: center;
-            justify-content: center;
+
         }
-        .custom-btn {
-            width: 100%;
-            background-color: #432075;
-            border-color: #432075;
-            color: white;
-            font-weight: bold;
-            position: relative;
-        }
-        .custom-btn:hover {
-            background-color: #102B7B; 
-            top:-2px;
-            border-bottom:2px solid #102B7B;
-        }
-        .pagination {
-            justify-content: center;
-        }
-        
+
+
+
+
 
     </style>
 </head>
 
 <body>
     <header>
-        <nav>
-            <div class="line"></div>
+        <nav class="">
+            <div class="line">
+            </div>
             <div class="navbar navbar-light">
                 <form class="form-inline nav-search" >
                     <img src="{{asset('logo.png')}}" alt="Logo" class="logo">
@@ -192,31 +165,31 @@
         </nav>
     </header>
     <h2>Brinquedos</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($produtos as $produto)
-            <div class="col">
-                <div class="card">
-                    @if($produto->Imagem->isNotEmpty())
-                        <img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="...">
-                    @else
-                        <img src="..." class="card-img-top" alt="Imagem Padrão">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{($produto->PRODUTO_NOME)}}</h5>
-                        <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}<p class="card-text">à vista</p></h6>
-                        <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
-
-
-                    </div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach($produtos as $produto)
+        <div class="col">
+            <div class="card">
+                @if($produto->Imagem->isNotEmpty())
+                    <img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="...">
+                @else
+                    <img src="..." class="card-img-top" alt="Imagem Padrão">
+                @endif
+                <div class="card-body">
+                    <h5 class="card-title">{{substr($produto->PRODUTO_NOME, 0, 15)}}</h5>
+                    <p class="card-text">{{substr($produto->PRODUTO_DESC, 0, 50)}}</p>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
 
-    <div class="d-flex justify-content-center mt-4">
-        {{$produtos ->onEachSide(0)->links()}}
-    </div>
-    
+
+
+
+
+
+
+
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
         <div class="redesSociais">
