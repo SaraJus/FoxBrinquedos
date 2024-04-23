@@ -22,7 +22,8 @@
         hr {
             border-color: #432075;
         }
-      /*    .sessoes {
+
+        /*    .sessoes {
            background-image: url(fundo.png);
             background-size: 100%;
             opacity: 0.2;
@@ -171,6 +172,7 @@
             color: #432075;
         }
 
+
         .card-img-top {
             width: 200px;
             height: 200px;
@@ -197,6 +199,7 @@
         .novProd{
             margin: 0px;
         }
+
     </style>
 </head>
 
