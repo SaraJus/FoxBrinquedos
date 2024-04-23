@@ -192,6 +192,7 @@
         </nav>
     </header>
     <h2>Brinquedos</h2>
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($produtos as $produto)
             <div class="col">
@@ -212,6 +213,7 @@
             </div>
         @endforeach
     </div>
+
 
     <div class="d-flex justify-content-center mt-4">
         {{$produtos ->onEachSide(0)->links()}}

@@ -63,7 +63,7 @@
             height: 300px;
             width: 225px;
             border-radius: 15px;
-            background-color: #444;
+            background-color: #daf7ff;
         }
 
         .botoesHeader {
@@ -171,6 +171,35 @@
         .navBar :visited {
             color: #432075;
         }
+
+
+        .card-img-top {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            margin-left: 10px;
+            margin-top: 10px;
+
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-text {
+            font-size: 12px;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+        }
+
+        .novProd{
+            margin: 0px;
+        }
+
     </style>
 </head>
 
@@ -238,18 +267,23 @@
             <div class="d-flex justify-content-center mb-5 mt-5">
                 <h2>Novidades</h2>
             </div>
-            <div class="d-flex justify-content-center mb-5">
-                <div class="card mr-5"></div>
-                <div class="card mr-5"></div>
-                <div class="card mr-5"></div>
-                <div class="card"></div>
-            </div>
-            <div class="d-flex justify-content-center mb-5">
-                <div class="card mr-5"></div>
-                <div class="card mr-5"></div>
-                <div class="card mr-5"></div>
-                <div class="card"></div>
-            </div>
+            <div class="row d-flex justify-content-center">
+                @foreach($produtos as $produto)
+                <div class="d-flex justify-content-center mb-5 rol">
+                    <div class="card ml-5 mr-5">
+                    @if($produto->Imagem->isNotEmpty())
+                        <img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="">
+                        @else
+                        <img src="..." class="card-img-top" alt="Imagem Padrão">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{substr($produto->PRODUTO_NOME, 0, 15)}}</h5>
+                            <p class="card-text">{{substr($produto->PRODUTO_DESC, 0, 50)}}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                </div>
         </section>
         <section class="d-flex justify-content-center mb-5 desconto">
             <p class="mr-3 mt-5">Descontos</p>
