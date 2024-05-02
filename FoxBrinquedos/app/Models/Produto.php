@@ -19,4 +19,13 @@ class Produto extends Model
         return $this->hasMany(Imagem::class,'PRODUTO_ID','PRODUTO_ID');
     }
    
+    public function itensPedido()
+    {
+        return $this->hasMany('App\PedidoItem');
+    }
+
+    public function itensCarrinho()
+    {
+        return $this->hasMany('App\CarrinhoItem');
+    }
 }

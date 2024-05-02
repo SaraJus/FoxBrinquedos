@@ -60,10 +60,10 @@
         }
 
         .card {
-            height: 300px;
-            width: 225px;
+            height: auto;
+            width: 175px;
             border-radius: 15px;
-            background-color: #daf7ff;
+            background-color: #444;
         }
 
         .botoesHeader {
@@ -174,32 +174,46 @@
 
 
         .card-img-top {
-            width: 200px;
-            height: 200px;
-            border-radius: 15px;
+            width: 150px;
+            height: 150px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
             margin-left: 10px;
-            margin-top: 10px;
-
+            margin-top: 5px;
         }
 
         .card-title {
-            font-size: 15px;
+            font-size: 12px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }
+
+        .card-text {
+            font-size: 14px;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            padding-left: 5px;
+            margin-top: 2px;
+
+        }
+
+        .novProd {
+            margin: 0px;
+        }
+
+        .card-preco {
+            color: #432075;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
-        .card-text {
-            font-size: 12px;
-            font-family: 'Times New Roman', Times, serif;
-            margin: 0;
-        }
-
-        .novProd{
-            margin: 0px;
-        }
-
     </style>
 </head>
 
@@ -267,23 +281,26 @@
             <div class="d-flex justify-content-center mb-5 mt-5">
                 <h2>Novidades</h2>
             </div>
-            <div class="row d-flex justify-content-center">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
                 @foreach($produtos as $produto)
-                <div class="d-flex justify-content-center mb-5 rol">
-                    <div class="card ml-5 mr-5">
-                    @if($produto->Imagem->isNotEmpty())
-                        <img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="">
+                <div class="col">
+                    <div class="card">
+                        @if($produto->Imagem->isNotEmpty())
+                        <img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="...">
                         @else
                         <img src="..." class="card-img-top" alt="Imagem Padrão">
                         @endif
                         <div class="card-body">
-                            <h5 class="card-title">{{substr($produto->PRODUTO_NOME, 0, 15)}}</h5>
-                            <p class="card-text">{{substr($produto->PRODUTO_DESC, 0, 50)}}</p>
+                            <h5 class="card-title">{{($produto->PRODUTO_NOME)}}</h5>
+                            <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
+                                <p class="card-text">à vista</p>
+                            </h6>
+                            <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
                         </div>
                     </div>
                 </div>
                 @endforeach
-                </div>
+            </div>
         </section>
         <section class="d-flex justify-content-center mb-5 desconto">
             <p class="mr-3 mt-5">Descontos</p>
