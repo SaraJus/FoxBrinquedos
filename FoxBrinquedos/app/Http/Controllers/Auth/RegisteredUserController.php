@@ -14,12 +14,13 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-
+    
     public function create(): View
     {
-        return view('cadastro');
+        return view('index');
     }
 
+    
     public function store(Request $request): RedirectResponse
     {
 
@@ -30,7 +31,6 @@ class RegisteredUserController extends Controller
             'USUARIO_CPF' => '00000'
         ]);
 
-        
 
         Auth::login($user);
 

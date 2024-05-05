@@ -9,17 +9,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-    body, html {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; 
-    }
-
-        hr{
+        hr {
             border-color: #102B7B;
         }
-        h2{
+
+        h2 {
             color: #432075;
             text-align: center;
             font-size: 30px;
@@ -97,15 +98,16 @@
             color: #102B7B;
             text-align: center;
         }
-        .navBar a:hover{
-            color:#43ADDA;
+
+        .navBar a:hover {
+            color: #43ADDA;
         }
 
-        .navBar a:visited{
+        .navBar a:visited {
             color: #102B7B;
         }
 
-        .card-img-top{
+        .card-img-top {
             width: 150px;
             height: 150px;
             align-items: center;
@@ -114,16 +116,18 @@
             margin-left: 10px;
             margin-top: 5px;
         }
-        .card-title{
-        font-size: 12px; 
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        padding: 2px;
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        max-width: 150px; 
+
+        .card-title {
+            font-size: 12px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
         }
-        .card-text{
+
+        .card-text {
             font-size: 14px;
             font-family: 'Times New Roman', Times, serif;
             display: flex;
@@ -132,12 +136,13 @@
 
         }
 
-        .card{
+        .card {
             background-color: white;
             text-align: center;
             margin: 10px;
         }
-        .card-preco{
+
+        .card-preco {
             color: #432075;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: 18px;
@@ -145,6 +150,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .custom-btn {
             width: 100%;
             background-color: #432075;
@@ -153,16 +159,16 @@
             font-weight: bold;
             position: relative;
         }
+
         .custom-btn:hover {
-            background-color: #102B7B; 
-            top:-2px;
-            border-bottom:2px solid #102B7B;
+            background-color: #102B7B;
+            top: -2px;
+            border-bottom: 2px solid #102B7B;
         }
+
         .pagination {
             justify-content: center;
         }
-        
-
     </style>
 </head>
 
@@ -171,13 +177,27 @@
         <nav>
             <div class="line"></div>
             <div class="navbar navbar-light">
-                <form class="form-inline nav-search" >
+                <form class="form-inline nav-search">
                     <img src="{{asset('logo.png')}}" alt="Logo" class="logo">
                     <input class="form-control me-2 " type="search" placeholder="Pesquisar" aria-label="Search" style=" width:326px; ">
                     <i class="btn btn-custom fa fa-search" type="submit"></i>
                 </form>
                 <div>
-                    <i type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></i>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" aria-expanded="false">
+                            <img class="botoesHeader" src="{{asset('cart.png')}}" alt=""> Carrinho
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <ul class="dropdown-list">
+                            </ul>
+
+                            <div class="dropdown-divider"></div>
+                            <p class="dropdown-total">Total: R$ 0.00</p>
+                            <a class="dropdown-item" href="#">Finalizar Compra</a>
+                        </div>
+                    </div>
+
+
                     <i type="button"><img class="botoesHeader" src="{{asset('user.png')}}" alt=""></i>
                 </div>
             </div>
@@ -194,29 +214,31 @@
     <h2>Brinquedos</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($produtos as $produto)
-            <div class="col">
-                <div class="card">
-                    @if($produto->Imagem->isNotEmpty())
-                        <img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="...">
-                    @else
-                        <img src="..." class="card-img-top" alt="Imagem Padrão">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{($produto->PRODUTO_NOME)}}</h5>
-                        <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}<p class="card-text">à vista</p></h6>
-                        <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
+        <div class="col">
+            <div class="card">
+                @if($produto->Imagem->isNotEmpty())
+                <img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="...">
+                @else
+                <img src="..." class="card-img-top" alt="Imagem Padrão">
+                @endif
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
+                    <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
+                        <p class="card-text">à vista</p>
+                    </h6>
+                    <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
 
 
-                    </div>
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
 
     <div class="d-flex justify-content-center mt-4">
         {{$produtos ->onEachSide(0)->links()}}
     </div>
-    
+
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
         <div class="redesSociais">
@@ -244,6 +266,35 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        var totalPreco = 0;
+
+        function adicionarProduto(produtoNome, produtoPreco) {
+            var lista = document.querySelector('.dropdown-list');
+            var novoItem = document.createElement('li');
+            novoItem.textContent = produtoNome + ' - R$ ' + produtoPreco.toFixed(2);
+            lista.appendChild(novoItem);
+
+            totalPreco += produtoPreco;
+            document.querySelector('.dropdown-total').textContent = 'Total: R$ ' + totalPreco.toFixed(2);
+        }
+
+        document.querySelector('.dropdown-toggle').addEventListener('click', function() {
+            var dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.custom-btn').forEach(function(botao) {
+            botao.addEventListener('click', function(event) {
+                var produtoNome = event.target.closest('.card').querySelector('.card-title').textContent.trim();
+                var produtoPreco = parseFloat(event.target.closest('.card').querySelector('.card-preco').textContent.trim().replace('R$', ''));
+                adicionarProduto(produtoNome, produtoPreco);
+            });
+        });
+    </script>
+
+
 
 </body>
 

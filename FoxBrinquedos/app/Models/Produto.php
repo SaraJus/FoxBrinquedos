@@ -18,5 +18,12 @@ class Produto extends Model
     public function Imagem(){
         return $this->hasMany(Imagem::class,'PRODUTO_ID','PRODUTO_ID');
     }
+    public function Categoria(){
+        return $this->belongsto(Categoria::class, 'CATEGORIA_ID','CATEGORIA_ID');
+    }
+
+    public function Estoque(){
+        return $this->belongsto(Estoque::class, 'PRODUTO_ID','PRODUTO_ID');
+    }
    
 }
