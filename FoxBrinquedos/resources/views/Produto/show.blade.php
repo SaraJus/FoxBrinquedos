@@ -192,6 +192,10 @@
         </nav>
     </header>
 
+    <h2>Brinquedos</h2>
+
+
+
     
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">

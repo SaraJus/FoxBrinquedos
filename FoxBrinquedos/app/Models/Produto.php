@@ -26,4 +26,13 @@ class Produto extends Model
         return $this->belongsto(Estoque::class, 'PRODUTO_ID','PRODUTO_ID');
     }
    
+    public function itensPedido()
+    {
+        return $this->hasMany('App\PedidoItem');
+    }
+
+    public function itensCarrinho()
+    {
+        return $this->hasMany('App\CarrinhoItem');
+    }
 }

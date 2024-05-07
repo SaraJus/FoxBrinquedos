@@ -40,6 +40,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function itensCarrinho()
+    {
+        return $this->hasMany('App\CarrinhoItem');
+    }
+
+    public function pedidos()
+    {
+        return $this->hasMany('App\Pedido');
+    }
         
 
 
