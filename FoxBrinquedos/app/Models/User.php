@@ -41,14 +41,19 @@ class User extends Authenticatable
         ];
     }
 
-    public function itensCarrinho()
+    public function endereco()
     {
-        return $this->hasMany('App\CarrinhoItem');
+        return $this->hasMany(Endereco::class, 'USUARIO_ID', 'USUARIO_ID');
     }
 
     public function pedidos()
     {
-        return $this->hasMany('App\Pedido');
+        return $this->hasMany(Pedido::class, 'USUARIO_ID', 'USUARIO_ID');
+    }
+
+    public function carrinhoItens()
+    {
+        return $this->hasMany(CarrinhoItem::class, 'USUARIO_ID', 'USUARIO_ID');
     }
         
 

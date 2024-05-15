@@ -11,6 +11,7 @@ class ProdutoController extends Controller
     public function produto(){
 
         return view('produto.produto')->with('produtos', Produto::paginate(10));
+     ;
     }
 
     public function show(){

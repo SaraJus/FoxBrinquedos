@@ -166,9 +166,6 @@
             border-bottom: 2px solid #102B7B;
         }
 
-        .pagination {
-            justify-content: center;
-        }
     </style>
 </head>
 

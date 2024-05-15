@@ -5,18 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CarrinhoItem extends Model
+class Endereco extends Model
 {
     use HasFactory;
+    
+    protected $table = 'ENDERECO';
+    protected $primaryKey = 'ENDERECO_ID';
 
-    protected $table = "CARRINHO_ITEM";
     public function user()
     {
         return $this->belongsTo(User::class, 'USUARIO_ID', 'USUARIO_ID');
     }
 
-    public function produto()
+    public function pedidos()
     {
-        return $this->belongsTo(Produto::class, 'PRODUTO_ID', 'PRODUTO_ID');
+        return $this->hasMany(Pedido::class, 'ENDERECO_ID', 'ENDERECO_ID');
     }
 }

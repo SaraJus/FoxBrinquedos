@@ -11,13 +11,13 @@ class PedidoItem extends Model
 
     protected $table = "PEDIDO_ITEM";
 
-    public function produto()
-    {
-        return $this->belongsTo('App\Produto');
-    }
-
     public function pedido()
     {
-        return $this->belongsTo('App\Pedido');
+        return $this->belongsTo(Pedido::class, 'PEDIDO_ID', 'PEDIDO_ID');
+    }
+
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class, 'PRODUTO_ID', 'PRODUTO_ID');
     }
 }

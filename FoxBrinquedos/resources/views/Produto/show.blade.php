@@ -192,30 +192,49 @@
         </nav>
     </header>
 
-    <h2>Quem viu também gostou</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($produtos as $produto)
-        <div class="col">
-            <div class="card">
-                @if($produto->Imagem->isNotEmpty())
-                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="..."></a>
-                @else
-                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="..." class="card-img-top" alt="Imagem Padrão"></a>
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
-                    <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
-                        <p class="card-text">à vista</p>
-                    </h6>
-                    <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
+    @section('content')
+<div class="container">
+    <h2>{{ $produto->PRODUTO_NOME }}</h2>
+    @if($produto->imagens->isNotEmpty())
+    <img src="{{ $produto->imagens->first()->IMAGEM_URL }}" class="img-fluid" alt="{{ $produto->PRODUTO_NOME }}">
+    @else
+    <img src="..." class="img-fluid" alt="Imagem Padrão">
+    @endif
+    <p>{{ $produto->PRODUTO_DESC }}</p>
+    <p>R$ {{ $produto->PRODUTO_PRECO }}</p>
+    <a href="{{ route('carrinho.adicionar', $produto->PRODUTO_ID) }}" class="btn btn-success">Adicionar ao Carrinho</a>
+</div>
+@endsection
+@extends('layouts.app')
 
-
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-
+@section('content')
+<div class="container">
+    <h2>Pedido #{{ $pedido->PEDIDO_ID }}</h2>
+    <p>Data: {{ $pedido->PEDIDO_DATA }}</p>
+    <p>Status: {{ $pedido->status->STATUS_DESC }}</p>
+    <h3>Itens do Pedido</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($pedido->itens as $item)
+            <tr>
+                <td>{{ $item->produto->PRODUTO_NOME }}</td>
+                <td>{{ $item->ITEM_QTD }}</td>
+                <td>R$ {{ $item->ITEM_PRECO }}</td>
+                <td>R$ {{ $item->ITEM_QTD * $item->ITEM_PRECO }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection
 
 
     
