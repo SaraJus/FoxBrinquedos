@@ -192,7 +192,29 @@
         </nav>
     </header>
 
-    <h2>Brinquedos</h2>
+    <h2>Quem viu também gostou</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach($produtos as $produto)
+        <div class="col">
+            <div class="card">
+                @if($produto->Imagem->isNotEmpty())
+                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="..."></a>
+                @else
+                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="..." class="card-img-top" alt="Imagem Padrão"></a>
+                @endif
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
+                    <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
+                        <p class="card-text">à vista</p>
+                    </h6>
+                    <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
+
+
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
 
 
 

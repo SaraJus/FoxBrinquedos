@@ -211,19 +211,15 @@
             <hr>
         </nav>
     </header>
-    <h2>Brinquedos</h2>
+    <h2>BRINQUEDOS</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($produtos as $produto)
+        @foreach($categorias as $categoria)
         <div class="col">
             <div class="card">
-                @if($produto->Imagem->isNotEmpty())
-                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="..."></a>
-                @else
-                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="..." class="card-img-top" alt="Imagem Padrão"></a>
-                @endif
+
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
-                    <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
+                    <h5 class="card-title"><a href="#">{{($categoria->CATEGORIA_NOME)}}</a></h5>
+                    <h6 class="card-preco">R${{($categoria->CATEGORIA_NOME)}}
                         <p class="card-text">à vista</p>
                     </h6>
                     <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
@@ -235,9 +231,6 @@
         @endforeach
     </div>
 
-    <div class="d-flex justify-content-center mt-4">
-        {{$produtos ->onEachSide(0)->links()}}
-    </div>
 
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
@@ -267,6 +260,7 @@
         </div>
     </footer>
 
+
     <script>
         var totalPreco = 0;
 
@@ -293,7 +287,6 @@
             });
         });
     </script>
-
 
 
 </body>
