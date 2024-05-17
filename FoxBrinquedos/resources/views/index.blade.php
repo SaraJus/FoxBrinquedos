@@ -221,10 +221,9 @@
             margin: 0;
         }
 
-        .novProd{
+        .novProd {
             margin: 0px;
         }
-
     </style>
 </head>
 
@@ -241,30 +240,21 @@
                 </form>
                 <div>
                     <i type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></i>
-                                @auth
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Dashboard
-                                    </a>
-                                @else
-                                    <a
-                                        href="{{ route('login') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Log in
-                                    </a>
+                    @auth
+                    <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                        Dashboard
+                    </a>
+                    @else
+                    <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                        Log in
+                    </a>
 
-                                    @if (Route::has('register'))
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                        >
-                                            Register
-                                        </a>
-                                    @endif
-                                @endauth
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                        Register
+                    </a>
+                    @endif
+                    @endauth
                 </div>
             </div>
             <hr>
@@ -297,20 +287,41 @@
                 <h2 class="">Categorias</h2>
             </div>
             <div class="cardsCategorias d-flex justify-content-center mb-2">
-                <div class="cardAzul mr-5"><img class="catImg" src="{{asset('legoCat.png')}}" alt=""></div>
-                <div class="cardRoxo mr-5"><img class="catImg" src="{{asset('bonecaCat.png')}}" alt=""></div>
-                <div class="cardAzul mr-5"><img class="catImg" src="{{asset('bonecosCat.png')}}" alt=""></div>
-                <div class="cardRoxo mr-5"><img class="catImg" src="{{asset('ursoCat.png')}}" alt=""></div>
-                <div class="cardAzul"><img class="catImg" src="{{asset('carrinhoCat.png')}}" alt=""></div>
+                <div class="cardAzul mr-5">
+                    <a href="{{ route('categoria', 'LEGO') }}">
+                        <img class="catImg" src="{{ asset('legoCat.png') }}" alt="LEGO">
+                    </a>
+                </div>
+                <div class="cardRoxo mr-5">
+                    <a href="{{ route('categoria', 'Bonecas') }}">
+                        <img class="catImg" src="{{ asset('bonecaCat.png') }}" alt="Bonecas">
+                    </a>
+                </div>
+                <div class="cardAzul mr-5">
+                    <a href="{{ route('categoria', 'Boneco') }}">
+                        <img class="catImg" src="{{ asset('bonecosCat.png') }}" alt="Bonecos">
+                    </a>
+                </div>
+                <div class="cardRoxo mr-5">
+                    <a href="{{ route('categoria', 'Ursinhos') }}">
+                        <img class="catImg" src="{{ asset('ursoCat.png') }}" alt="Ursinhos">
+                    </a>
+                </div>
+                <div class="cardAzul">
+                    <a href="{{ route('categoria', 'Carrinhos') }}">
+                        <img class="catImg" src="{{ asset('carrinhoCat.png') }}" alt="Carrinhos">
+                    </a>
+                </div>
             </div>
             <div class="nomeCat d-flex justify-content-center mb-3">
-                <a href="" class="">Lego</a>
-                <a href="" class="">Bonecas</a>
-                <a href="" class="">Bonecos</a>
-                <a href="" class="">Ursinhos</a>
-                <a href="">Carrinhos</a>
+                <a href="{{ route('categoria', 'LEGO') }}">Lego</a>
+                <a href="{{ route('categoria', 'Bonecas') }}">Bonecas</a>
+                <a href="{{ route('categoria', 'Boneco') }}">Bonecos</a>
+                <a href="{{ route('categoria', 'Ursinhos') }}">Ursinhos</a>
+                <a href="{{ route('categoria', 'Carrinhos') }}">Carrinhos</a>
             </div>
         </section>
+
         <section>
             <div class="d-flex justify-content-center mb-5 mt-5">
                 <h2>Novidades</h2>

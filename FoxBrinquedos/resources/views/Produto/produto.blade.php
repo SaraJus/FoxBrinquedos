@@ -169,6 +169,11 @@
         .pagination {
             justify-content: center;
         }
+        .link{
+            margin: 20px;
+            left: 400px;
+
+        }
     </style>
 </head>
 
@@ -183,22 +188,32 @@
                     <i class="btn btn-custom fa fa-search" type="submit"></i>
                 </form>
                 <div>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" aria-expanded="false">
-                            <img class="botoesHeader" src="{{asset('cart.png')}}" alt=""> Carrinho
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <ul class="dropdown-list">
-                            </ul>
+                    @auth
+                    <a href="{{ url('/dashboard') }}" class="link">
+                        Dashboard
+                    </a>
+                    @else
+                    <a href="{{ route('login') }}" class="link">
+                        Log in
+                    </a>
 
-                            <div class="dropdown-divider"></div>
-                            <p class="dropdown-total">Total: R$ 0.00</p>
-                            <a class="dropdown-item" href="#">Finalizar Compra</a>
-                        </div>
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="link">
+                        Register
+                    </a>
+                    @endif
+                    @endauth
+                </div>
+                <div class="dropdown">
+                    <i class="btn dropdown-toggle" type="button" id="cartDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="botoesHeader" src="{{asset('cart.png')}}" alt="Cart">
+                    </i>
+                    <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="cartDropdown" style="width: 300px;">
+                        <ul class="list-unstyled dropdown-list">
+                            <li class="dropdown-total">Total: R$ 0,00</li>
+                        </ul>
+                        <button class="btn btn-primary w-100 mt-3" id="finalizar-compras">Finalizar Compras</button>
                     </div>
-
-
-                    <i type="button"><img class="botoesHeader" src="{{asset('user.png')}}" alt=""></i>
                 </div>
             </div>
             <hr>
@@ -226,9 +241,7 @@
                     <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
                         <p class="card-text">à vista</p>
                     </h6>
-                    <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
-
-
+                    <button class="btn btn-primary custom-btn" type="button">Adicionar</button>
                 </div>
             </div>
         </div>
@@ -274,16 +287,11 @@
             var lista = document.querySelector('.dropdown-list');
             var novoItem = document.createElement('li');
             novoItem.textContent = produtoNome + ' - R$ ' + produtoPreco.toFixed(2);
-            lista.appendChild(novoItem);
+            lista.insertBefore(novoItem, lista.firstChild);
 
             totalPreco += produtoPreco;
             document.querySelector('.dropdown-total').textContent = 'Total: R$ ' + totalPreco.toFixed(2);
         }
-
-        document.querySelector('.dropdown-toggle').addEventListener('click', function() {
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-            dropdownMenu.classList.toggle('show');
-        });
 
         document.querySelectorAll('.custom-btn').forEach(function(botao) {
             botao.addEventListener('click', function(event) {
@@ -292,9 +300,16 @@
                 adicionarProduto(produtoNome, produtoPreco);
             });
         });
+        document.getElementById('finalizar-compras').addEventListener('click', function() {
+        window.location.href = "{{ route('carrinho.index') }}";
+    });
+
     </script>
 
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJq6AKhWnXjqjsz+z3pMVm7m1oLD8x4m8VZXJfF0f5X40a6Uj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 

@@ -166,6 +166,7 @@
             border-bottom: 2px solid #102B7B;
         }
 
+
     </style>
 </head>
 
@@ -180,23 +181,24 @@
                     <i class="btn btn-custom fa fa-search" type="submit"></i>
                 </form>
                 <div>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" aria-expanded="false">
-                            <img class="botoesHeader" src="{{asset('cart.png')}}" alt=""> Carrinho
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <ul class="dropdown-list">
-                            </ul>
+                    <i type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></i>
+                    @auth
+                    <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                        Dashboard
+                    </a>
+                    @else
+                    <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                        Log in
+                    </a>
 
-                            <div class="dropdown-divider"></div>
-                            <p class="dropdown-total">Total: R$ 0.00</p>
-                            <a class="dropdown-item" href="#">Finalizar Compra</a>
-                        </div>
-                    </div>
-
-
-                    <i type="button"><img class="botoesHeader" src="{{asset('user.png')}}" alt=""></i>
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                        Register
+                    </a>
+                    @endif
+                    @endauth
                 </div>
+            </div>
             </div>
             <hr>
             <div class="d-flex justify-content-center mb-3 mt-3 navBar">
@@ -208,15 +210,21 @@
             <hr>
         </nav>
     </header>
-    <h2>BRINQUEDOS</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($categorias as $categoria)
+    <section>
+        <div class="container">
+            <h2>{{ $categoria->CATEGORIA_NOME }}</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach($produtos as $produto)
         <div class="col">
             <div class="card">
-
+                @if($produto->Imagem->isNotEmpty())
+                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="..."></a>
+                @else
+                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="..." class="card-img-top" alt="Imagem Padrão"></a>
+                @endif
                 <div class="card-body">
-                    <h5 class="card-title"><a href="#">{{($categoria->CATEGORIA_NOME)}}</a></h5>
-                    <h6 class="card-preco">R${{($categoria->CATEGORIA_NOME)}}
+                    <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
+                    <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
                         <p class="card-text">à vista</p>
                     </h6>
                     <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
@@ -228,7 +236,8 @@
         @endforeach
     </div>
 
-
+        
+    </section>
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
         <div class="redesSociais">
@@ -256,36 +265,6 @@
             </div>
         </div>
     </footer>
-
-
-    <script>
-        var totalPreco = 0;
-
-        function adicionarProduto(produtoNome, produtoPreco) {
-            var lista = document.querySelector('.dropdown-list');
-            var novoItem = document.createElement('li');
-            novoItem.textContent = produtoNome + ' - R$ ' + produtoPreco.toFixed(2);
-            lista.appendChild(novoItem);
-
-            totalPreco += produtoPreco;
-            document.querySelector('.dropdown-total').textContent = 'Total: R$ ' + totalPreco.toFixed(2);
-        }
-
-        document.querySelector('.dropdown-toggle').addEventListener('click', function() {
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-            dropdownMenu.classList.toggle('show');
-        });
-
-        document.querySelectorAll('.custom-btn').forEach(function(botao) {
-            botao.addEventListener('click', function(event) {
-                var produtoNome = event.target.closest('.card').querySelector('.card-title').textContent.trim();
-                var produtoPreco = parseFloat(event.target.closest('.card').querySelector('.card-preco').textContent.trim().replace('R$', ''));
-                adicionarProduto(produtoNome, produtoPreco);
-            });
-        });
-    </script>
-
-
 </body>
 
 </html>
