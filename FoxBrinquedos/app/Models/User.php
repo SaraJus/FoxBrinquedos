@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,39 +21,21 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'USUARIO_SENHA'
+        'USUARIO_SENHA',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function itensCarrinho()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
-    public function endereco()
-    {
-        return $this->hasMany(Endereco::class, 'USUARIO_ID', 'USUARIO_ID');
+        return $this->hasMany('App\CarrinhoItem');
     }
 
     public function pedidos()
     {
-        return $this->hasMany(Pedido::class, 'USUARIO_ID', 'USUARIO_ID');
+        return $this->hasMany('App\Pedido');
     }
-
-    public function carrinhoItens()
-    {
-        return $this->hasMany(CarrinhoItem::class, 'USUARIO_ID', 'USUARIO_ID');
-    }
-        
-
-
 }

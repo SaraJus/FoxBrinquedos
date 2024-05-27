@@ -13,39 +13,44 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
-    <!-- Custom Styles -->
     <style>
-        .background-image {
+        body {
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: radial-gradient(circle, #43ADDA 10%, transparent 10%), 
+                        radial-gradient(circle, #FFA800 10%, transparent 10%), 
+                        radial-gradient(circle, #EFEBEB 10%, transparent 10%);
+            background-position: 0 0, 50px 50px, 100px 100px;
+            background-size: 150px 150px;
             z-index: -1;
             opacity: 0.5;
         }
-
-        .form-container {
-            background-color: rgba(218, 247, 255, 0.9); 
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .transparent-form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparente */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Mantém a sombra */
+            border-radius: 0.5rem; /* Mantém os cantos arredondados */
+            overflow: hidden; /* Mantém o overflow hidden */
         }
     </style>
 </head>
-<body class="font-sans text-gray-900 antialiased relative" style="min-height: 100vh;">
-    <img src="{{ asset('fundo.png') }}" alt="fundo" class="background-image">
-    
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+<body class="font-sans text-gray-900 antialiased">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-transparent">
         <div>
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </div>
 
-        <div class="form-container w-full sm:max-w-md mt-6 px-6 py-4 shadow-md overflow-hidden sm:rounded-lg">
+        <div class="transparent-form-container w-full sm:max-w-md mt-6 px-6 py-4">
             {{ $slot }}
         </div>
     </div>

@@ -165,8 +165,6 @@
             top: -2px;
             border-bottom: 2px solid #102B7B;
         }
-
-
     </style>
 </head>
 
@@ -175,24 +173,25 @@
         <nav>
             <div class="line"></div>
             <div class="navbar navbar-light">
-                <form class="form-inline nav-search">
+
+                <form id="form-pesquisa" class="form-inline nav-search" action="{{ route('pesquisar.produto') }}" method="GET">
                     <img src="{{asset('logo.png')}}" alt="Logo" class="logo">
-                    <input class="form-control me-2 " type="search" placeholder="Pesquisar" aria-label="Search" style=" width:326px; ">
-                    <i class="btn btn-custom fa fa-search" type="submit"></i>
+                    <input id="search-input" class="form-control me-2" type="search" name="q" placeholder="Pesquisar" aria-label="Search" style=" width:326px; ">
+                    <button class="btn btn-custom fa fa-search" type="submit"></button>
                 </form>
                 <div>
                     <i type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></i>
                     @auth
-                    <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                    <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
                         Dashboard
                     </a>
                     @else
-                    <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                    <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
                         Log in
                     </a>
 
                     @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                    <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
                         Register
                     </a>
                     @endif
@@ -214,30 +213,31 @@
         <div class="container">
             <h2>{{ $categoria->CATEGORIA_NOME }}</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($produtos as $produto)
-        <div class="col">
-            <div class="card">
-                @if($produto->Imagem->isNotEmpty())
-                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="..."></a>
-                @else
-                <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="..." class="card-img-top" alt="Imagem Padrão"></a>
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
-                    <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
-                        <p class="card-text">à vista</p>
-                    </h6>
-                    <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
+                @foreach($produtos as $produto)
+                <div class="col">
+                    <div class="card">
+                        @if($produto->Imagem->isNotEmpty())
+                        <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="..."></a>
+                        @else
+                        <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="..." class="card-img-top" alt="Imagem Padrão"></a>
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
+                            <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
+                                <p class="card-text">à vista</p>
+                            </h6>
+                            <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
 
 
+                        </div>
+                    </div>
                 </div>
+                @endforeach
             </div>
-        </div>
-        @endforeach
-    </div>
 
-        
-    </section>
+         
+
+  
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
         <div class="redesSociais">
@@ -265,6 +265,15 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.getElementById('form-pesquisa').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var searchTerm = document.getElementById('search-input').value.trim();
+
+            window.location.href = "{{ route('pesquisar.produto') }}?q=" + encodeURIComponent(searchTerm);
+        });
+    </script>
 </body>
 
 </html>

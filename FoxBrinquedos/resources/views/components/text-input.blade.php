@@ -1,33 +1,35 @@
+@props(['disabled' => false])
+
+<input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'input-log']) !!}>
 
 <style>
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #3498db; 
-  border-radius: 4px;
-  font-size: 16px;
-  color: #2c3e50; 
-  background-color: #ecf0f1; 
-  transition: border-color 0.3s, box-shadow 0.3s;
+    .input-log {
+    padding: 10px;
+    border: 2px solid #43ADDA; 
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
-input:focus {
-  border-color: #2980b9; 
-  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); 
-  outline: none;
+.input-log:focus {
+    border-color: #2980b9; 
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
-input:disabled {
-  background-color: #bdc3c7;
-  border-color: #95a5a6; 
-  cursor: not-allowed;
-  color: #7f8c8d; 
+.input-log:disabled {
+    background-color: #ecf0f1; 
+    border-color: #bdc3c7; 
+    cursor: not-allowed;
+}
+
+.input-log::placeholder {
+    color: #95a5a6; 
+    opacity: 1; 
+}
+
+.input-log:disabled::placeholder {
+    color: #bdc3c7; 
 }
 
 </style>
-
-@props(['disabled' => false])
-
-<input {{ $disabled ? 'disabled' : '' }} >
