@@ -9,18 +9,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        html {
-            margin: 0%;
-            padding: 0%;
+  html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
         }
 
-        body {
-            margin: 0%;
-            padding: 0%;
-        }
         body::before {
             content: "";
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -31,7 +28,7 @@
             background-position: 0 0, 50px 50px, 100px 100px;
             background-size: 150px 150px;
             z-index: -1;
-            opacity: 0.5;
+            opacity: 0.1;
         }
 
         hr {
