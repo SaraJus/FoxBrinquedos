@@ -33,9 +33,7 @@ Route::get('finalizar', [FinalizarController::class,'finalizar'])->name('finaliz
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[IndexController::class, 'index'])->middleware(['auth', 'verified'])->name('index');
 
 
 
