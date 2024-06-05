@@ -9,7 +9,11 @@ class PedidoItem extends Model
 {
     use HasFactory;
 
-    protected $table = "PEDIDO_ITEM";
+    protected $table = 'PEDIDO_ITEM';
+    protected $primaryKey = 'PEDIDO_ITEM_ID';
+    public $timestamps = false; // Certifique-se de que essa linha está presente se você não estiver usando timestamps
+
+    protected $fillable = ['PEDIDO_ID', 'PRODUTO_ID', 'ITEM_QTD', 'ITEM_PRECO'];
 
     public function pedido()
     {

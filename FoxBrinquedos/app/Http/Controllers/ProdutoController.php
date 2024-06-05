@@ -24,7 +24,7 @@ class ProdutoController extends Controller
             ->where('PRODUTO_ID', '!=', $produto->PRODUTO_ID)
             ->where('PRODUTO_ATIVO', true)
             ->inRandomOrder()
-            ->take(6)
+            ->take(5)
             ->get();
 
         return view('produto.show', compact('produto', 'produtosRelacionados'));

@@ -11,6 +11,19 @@ class Endereco extends Model
     
     protected $table = 'ENDERECO';
     protected $primaryKey = 'ENDERECO_ID';
+    public $timestamps = false;
+    public $incrementing = false;
+
+    protected $fillable = [
+        'USUARIO_ID',
+        'ENDERECO_LOGRADOURO',
+        'ENDERECO_NOME',
+        'ENDERECO_NUMERO',
+        'ENDERECO_COMPLEMENTO',
+        'ENDERECO_CEP',
+        'ENDERECO_CIDADE',
+        'ENDERECO_ESTADO'
+    ];
 
     public function user()
     {

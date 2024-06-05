@@ -512,68 +512,27 @@
         <a class="d-flex mr-3 nav-link" href="{{route('contato.index')}}">CONTATO</a>
     </div>
     <hr>
+        </nav>
     </header>
 
-    <section>
-        <div class="container mt-5">
-            <h2 class="mt-5">Meus Pedidos</h2>
-            @if($pedidos->isEmpty())
-            <p>Você não tem pedidos.</p>
-            @else
-            <div class="row">
-                @foreach($pedidos as $pedido)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-header card-title">
-                            Pedido #{{ $pedido->PEDIDO_ID }} - {{ $pedido->PEDIDO_DATA }}
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title card-txt">Status: {{ $pedido->status ? $pedido->status->STATUS_DESC : 'Status não definido' }}</h5>
-                            <ul class="list-group list-group-flush">
-                                @foreach($pedido->itens as $item)
-                                <li class="list-group-item card-txt">
-                                    {{ $item->produto->PRODUTO_NOME }} - {{ $item->ITEM_QTD }} x R$ {{ number_format($item->ITEM_PRECO, 2, ',', '.') }}
-                                </li>
-                                @endforeach
-                            </ul>
-                            <p class="card-txt"><strong>Total:</strong> R$ {{ number_format($pedido->itens->sum(function($item) { return $item->ITEM_PRECO * $item->ITEM_QTD; }), 2, ',', '.') }}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+
+    <div class="container mt-4 mb-3">
+        <div class="card text-center">
+            <div class="card-header">
+                <h1>Pedido Concluído</h1>
             </div>
-            @endif
-<hr>
-            <!-- Endereços Section -->
-            <h2 class="mt-5">Meus Endereços</h2>
-            @if($enderecos->isEmpty())
-            <p>Você não tem endereços cadastrados.</p>
-            @else
-            <div class="row">
-                @foreach($enderecos as $endereco)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-header card-title">
-                            Endereço #{{ $endereco->ENDERECO_ID }}
-                        </div>
-                        <div class="card-body">
-                            <p class="card-txt">Logradouro: {{ $endereco->ENDERECO_LOGRADOURO }}, {{ $endereco->ENDERECO_NUMERO }}</p>
-                            <p class="card-txt">Complemento: {{ $endereco->ENDERECO_COMPLEMENTO }}</p>
-                            <p class="card-txt">CEP: {{ $endereco->ENDERECO_CEP }}</p>
-                            <p class="card-txt">Cidade: {{ $endereco->ENDERECO_CIDADE }}, {{ $endereco->ENDERECO_ESTADO }}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+            <div class="card-body">
+                <h5 class="card-title">Obrigado pela sua compra!</h5>
+                <p class="card-text">Seu pedido foi realizado com sucesso. Em breve você receberá um e-mail com os detalhes da sua compra.</p>
+                <a href="{{ route('index') }}" class="btn btn-primary">Voltar para a página inicial</a>
             </div>
-            @endif
         </div>
-    </section>
+    </div>
 
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
         <div class="redesSociais">
-            <p class="mt-3">Acompanhe nossas redes sociais</p>
+            <p>Acompanhe nossas redes sociais</p>
             <div class="d-flex">
                 <a href=""><img class="redesImg" src="{{asset('insta.png')}}" alt=""></a>
                 <a href=""><img class="redesImg" src="{{asset('wpp.png')}}" alt=""></a>
@@ -599,5 +558,6 @@
             </div>
         </div>
     </footer>
-
 </body>
+
+</html>

@@ -180,46 +180,76 @@
             <hr>
         </nav>
     </header>
+
     <section>
-        <div class="container">
-            <h2>{{ $categoria->CATEGORIA_NOME }}</h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach($produtos as $produto)
-                <div class="col">
+        <div class="container mt-5">
+            <h2 class="mt-5">Meus Pedidos</h2>
+            @if($pedidos->isEmpty())
+            <p>Você não tem pedidos.</p>
+            @else
+            <div class="row">
+                @foreach($pedidos as $pedido)
+                <div class="col-md-4 mb-4">
                     <div class="card">
-                        @if($produto->Imagem->isNotEmpty())
-                        <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="{{$produto->Imagem->first()->IMAGEM_URL}}" class="card-img-top" alt="..."></a>
-                        @else
-                        <a href="{{route('produto.show',$produto-> PRODUTO_ID)}}"><img src="..." class="card-img-top" alt="Imagem Padrão"></a>
-                        @endif
+                        <div class="card-header card-title">
+                            Pedido #{{ $pedido->PEDIDO_ID }} - {{ $pedido->PEDIDO_DATA }}
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><a href="{{route('produto.show',$produto-> PRODUTO_ID)}}">{{($produto->PRODUTO_NOME)}}</a></h5>
-                            <h6 class="card-preco">R${{($produto->PRODUTO_PRECO)}}
-                                <p class="card-text">à vista</p>
-                            </h6>
-                            <a href="#"><button class="btn btn-primary custom-btn" type="button">Adicionar</button></a>
-
-
+                            <h5 class="card-title card-txt">Status: {{ $pedido->status ? $pedido->status->STATUS_DESC : 'Status não definido' }}</h5>
+                            <ul class="list-group list-group-flush">
+                                @foreach($pedido->itens as $item)
+                                <li class="list-group-item card-txt">
+                                    {{ $item->produto->PRODUTO_NOME }} - {{ $item->ITEM_QTD }} x R$ {{ number_format($item->ITEM_PRECO, 2, ',', '.') }}
+                                </li>
+                                @endforeach
+                            </ul>
+                            <p class="card-txt"><strong>Total:</strong> R$ {{ number_format($pedido->itens->sum(function($item) { return $item->ITEM_PRECO * $item->ITEM_QTD; }), 2, ',', '.') }}</p>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
+            @endif
+<hr>
+            <!-- Endereços Section -->
+            <h2 class="mt-5">Meus Endereços</h2>
+            @if($enderecos->isEmpty())
+            <p>Você não tem endereços cadastrados.</p>
+            @else
+            <div class="row">
+                @foreach($enderecos as $endereco)
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header card-title">
+                            Endereço #{{ $endereco->ENDERECO_ID }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-txt">Logradouro: {{ $endereco->ENDERECO_LOGRADOURO }}, {{ $endereco->ENDERECO_NUMERO }}</p>
+                            <p class="card-txt">Complemento: {{ $endereco->ENDERECO_COMPLEMENTO }}</p>
+                            <p class="card-txt">CEP: {{ $endereco->ENDERECO_CEP }}</p>
+                            <p class="card-txt">Cidade: {{ $endereco->ENDERECO_CIDADE }}, {{ $endereco->ENDERECO_ESTADO }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
+        </div>
+    </section>
 
-         
-
-  
     <footer class="d-flex">
         <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
         <div class="redesSociais">
-            <p>Acompanhe nossas redes sociais</p>
+            <p class="mt-3">Acompanhe nossas redes sociais</p>
             <div class="d-flex">
                 <a href=""><img class="redesImg" src="{{asset('insta.png')}}" alt=""></a>
                 <a href=""><img class="redesImg" src="{{asset('wpp.png')}}" alt=""></a>
                 <a href=""><img class="redesImg" src="{{asset('face.png')}}" alt=""></a>
                 <a href=""><img class="redesImg" src="{{asset('linked.png')}}" alt=""></a>
             </div>
-            <p>Fale Conosco</p>
+            <a href="{{asset('contato')}}">
+                <p>Fale Conosco</p>
+            </a>
             <p>Troca e Devolução</p>
         </div>
         <div class="pagamento">
@@ -236,15 +266,5 @@
             </div>
         </div>
     </footer>
-    <script>
-        document.getElementById('form-pesquisa').addEventListener('submit', function(event) {
-            event.preventDefault();
 
-            var searchTerm = document.getElementById('search-input').value.trim();
-
-            window.location.href = "{{ route('pesquisar.produto') }}?q=" + encodeURIComponent(searchTerm);
-        });
-    </script>
 </body>
-
-</html>

@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Pedido;
+use App\Models\Endereco;
 
 class ProfileController extends Controller
 {
+    public function dashboard()
+    {
+        $usuarioId = Auth::id();
+
+        // Buscar pedidos e endereços do usuário autenticado
+        $pedidos = Pedido::where('USUARIO_ID', $usuarioId)->get();
+        $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
+
+        return view('dashboard', compact('pedidos', 'enderecos'));
+    }
+    
     /**
      * Display the user's profile form.
      */

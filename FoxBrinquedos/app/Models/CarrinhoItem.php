@@ -2,21 +2,23 @@
 
 namespace App\Models;
 
+use App\Traits\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CarrinhoItem extends Model
 {
     use HasFactory;
+    use HasCompositePrimaryKey;
 
     protected $table = 'CARRINHO_ITEM';
 
-    protected $fillable = ['USUARIO_ID', 'PRODUTO_ID', 'ITEM_QTD'];
-
+    protected $primaryKey = ['USUARIO_ID', 'PRODUTO_ID']; // Define chave composta
+    public $incrementing = false; // Desativa incremento automático
     public $timestamps = false;
 
-    protected $primaryKey = ['USUARIO_ID', 'PRODUTO_ID'];
-    public $incrementing = false; 
+    protected $fillable = ['USUARIO_ID', 'PRODUTO_ID', 'ITEM_QTD'];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'USUARIO_ID');
@@ -25,5 +27,15 @@ class CarrinhoItem extends Model
     public function produto()
     {
         return $this->belongsTo(Produto::class, 'PRODUTO_ID');
+    }
+
+    public function getKeyName()
+    {
+        return ['USUARIO_ID', 'PRODUTO_ID'];
+    }
+
+    public function getKeyType()
+    {
+        return 'array';
     }
 }

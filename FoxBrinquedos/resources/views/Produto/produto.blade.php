@@ -7,6 +7,11 @@
     <title>Fox</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         html,
@@ -291,69 +296,128 @@
             font-size: 18px;
             color: #102B7B;
         }
+        .navBar {
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navBar a,
+        .navBar .dropdown-toggle {
+            color: #102B7B !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .navBar a:hover,
+        .navBar .dropdown-toggle:hover {
+            color: #43ADDA !important;
+            /* Yellow text color on hover */
+        }
+
+        .dropdown-menu {
+            background-color: #ededed;
+            /* Blue background for dropdown */
+            border: none;
+        }
+
+        .dropdown-menu a {
+            color: #102B7B !important;
+            /* White text color for dropdown items */
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #102B7B !important;
+            /* Darker blue on hover */
+        }
+
+        @media (max-width: 768px) {
+            .navBar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navBar a,
+            .navBar .dropdown-toggle {
+                margin-bottom: 10px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
-    <header>
-        <nav x-data="{ open: false }">
-            <div class="line">
-            </div>
-            <div class="navbar navbar-light">
-                <form id="form-pesquisa" class="form-inline nav-search" action="{{ route('pesquisar.produto') }}" method="GET">
-                    <img src="{{asset('logo.png')}}" alt="Logo" class="logo">
-                    <div class="search-container">
-                        <input id="search-input" class="form-control" type="search" name="q" placeholder="Pesquisar" aria-label="Search">
-                        <button class="btn btn-custom fa fa-search" type="submit"></button>
-                    </div>
-                </form>
-
-                <div>
-
-                    @if (Route::has('login'))
-                    @auth
-
-                    <div class="dropdown">
-                        <button class="dropbtn">
-                            <img class="botoesHeader" src="{{asset('user.png')}}" alt="User Icone">
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="{{ route('profile.edit') }}">Editar seu Perfil</a>
-                            <a href="{{ url('/profile') }}">Meus pedidos</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                    Sair</a>
-
-                            </form>
-                        </div>
-                    </div>
-                    @else
-                    <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                        Log in
-                    </a>
-
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                        Register
-                    </a>
-                    @endif
-                    @endauth
-                    @endif
+<header>
+    <nav x-data="{ open: false }">
+        <div class="line">
+        </div>
+        <div class="navbar navbar-light">
+            <form id="form-pesquisa" class="form-inline nav-search" action="{{ route('pesquisar.produto') }}" method="GET">
+                <img src="{{asset('logo.png')}}" alt="Logo" class="logo">
+                <div class="search-container">
+                    <input id="search-input" class="form-control" type="search" name="q" placeholder="Pesquisar" aria-label="Search">
+                    <button class="btn btn-custom fa fa-search" type="submit"></button>
                 </div>
-                <a type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></></a>
+            </form>
 
+            <div>
+
+                @if (Route::has('login'))
+                @auth
+
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <img class="botoesHeader" src="{{asset('user.png')}}" alt="User Icone">
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="{{ route('profile.edit') }}">Editar seu Perfil</a>
+                        <a href="{{ url('') }}">Meus pedidos</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                Sair</a>
+
+                        </form>
+                    </div>
+                </div>
+                @else
+                <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                    Log in
+                </a>
+
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                    Register
+                </a>
+                @endif
+                @endauth
+                @endif
             </div>
-            <hr>
-            <div class="d-flex justify-content-center mb-3 mt-3 navBar">
-                <a class="d-flex mr-3" href="">HOME</a>
-                <a class="d-flex mr-3" href="{{asset('produto')}}">BRINQUEDOS</a>
-                <a class="d-flex mr-3" href="">CATEGORIA</a>
-                <a class="d-flex mr-3" href="">CONTATO</a>
-            </div>
-            <hr>
-        </nav>
+            <a type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></></a>
+
+        </div>
+    </nav>
+    <hr>
+    <div class="d-flex justify-content-center mb-2 mt-2 navBar">
+        <a class="d-flex mr-3 nav-link" href="{{route('index')}}">HOME</a>
+        <a class="d-flex mr-3 nav-link" href="{{route('produto.index')}}">BRINQUEDOS</a>
+        <a class="nav-link dropdown-toggle" href="#" id="categoriaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            CATEGORIA
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="categoriaDropdown">
+            @foreach(\App\Models\Categoria::where('CATEGORIA_ATIVO', 1)->get() as $categoriaItem)
+            <a class="dropdown-item" href="{{ route('categoria', ['categoria_nome' => $categoriaItem->CATEGORIA_NOME]) }}">
+                {{ $categoriaItem->CATEGORIA_NOME }}
+            </a>
+            @endforeach
+        </ul>
+        <a class="d-flex mr-3 nav-link" href="{{route('contato.index')}}">CONTATO</a>
+    </div>
+    <hr>
+    </nav>
+    
     </header>
     <h2>Brinquedos</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
