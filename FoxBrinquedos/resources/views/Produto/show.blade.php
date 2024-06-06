@@ -37,7 +37,6 @@
             opacity: 0.1;
         }
 
-
         h2 {
             color: #432075;
             text-align: center;
@@ -46,7 +45,6 @@
             margin-top: 20px;
         }
 
-        /* Linha header */
         .line {
             background-color: #43ADDA;
             width: 100%;
@@ -57,7 +55,6 @@
             border-color: #102B7B;
         }
 
-        /* logo */
         .logo {
             height: 75px;
             width: 75px;
@@ -67,7 +64,6 @@
             width: 50px;
         }
 
-        /* navbar */
         .navBar {
             border-radius: 5px;
             align-items: center;
@@ -75,7 +71,7 @@
         }
 
         .navBar a,
-        .navBar .dropdown-toggle {
+        .navBar {
             color: #102B7B !important;
             font-weight: bold;
             text-transform: uppercase;
@@ -85,23 +81,27 @@
         .navBar a:hover,
         .navBar .dropdown-toggle:hover {
             color: #43ADDA !important;
-            /* Yellow text color on hover */
         }
 
         .dropdown-menu {
-            background-color: #ededed;
-            /* Blue background for dropdown */
+            background-color: white;
             border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
         }
 
         .dropdown-menu a {
-            color: #102B7B !important;
-            /* White text color for dropdown items */
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .dropdown-menu a:hover {
-            background-color: #102B7B !important;
-            /* Darker blue on hover */
+        .dropdown-menu a:hover {           
+         background-color: #102B7B;
+            color: white !important;
+
         }
 
         @media (max-width: 768px) {
@@ -116,7 +116,23 @@
             }
         }
 
-        /* produto */
+        .link-a {
+            color: #102B7B;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            margin: 0 20px;
+            margin-left: 665px;
+        }
+
+        .link-a:hover {
+            color: #43ADDA;
+            text-decoration: none;
+
+        }
+
+        
+
         .info_produto {
             display: flex;
             flex-direction: column;
@@ -125,7 +141,6 @@
             margin-top: -300px;
         }
 
-        /* pagamento */
         .pagamentos {
             display: flex;
             gap: 10px;
@@ -133,7 +148,6 @@
             margin-top: -100px;
         }
 
-        /* 'Adicionar ao Carrinho' */
         .adicionar {
             background-color: orange;
             width: 200px;
@@ -143,7 +157,6 @@
             margin-left: 200px;
         }
 
-        /* descrição do produto */
         .descricao {
             width: 650px;
             height: 200px;
@@ -154,7 +167,6 @@
             border-radius: 10px;
         }
 
-        /* card do produto */
         .card_produto {
             margin-left: 300px;
             border: none;
@@ -183,14 +195,12 @@
             padding-bottom: 20px;
         }
 
-        /* botões de quantidade */
         .btn_adicionar {
             display: flex;
             flex-direction: row;
             gap: 10px;
         }
 
-        /* Estilos para o card do corpo do produto */
         .card-body2 {
             width: 100%;
             height: 250px;
@@ -202,7 +212,6 @@
             text-align: justify;
         }
 
-        /* footer */
         footer {
             background-color: #43adda;
             height: 200px;
@@ -239,14 +248,11 @@
             gap: 20px;
         }
 
-        /* carrossel de imagens */
         .carousel-item img {
             width: auto;
             height: 350px;
             object-fit: fill;
         }
-
-        /*CSS CARD SARA*/
 
         .img-top {
             width: 150px;
@@ -317,8 +323,6 @@
             border-bottom: 2px solid #102B7B;
         }
 
-
-
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             width: 40px;
@@ -331,33 +335,45 @@
             filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
         }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-left: 700px;
+        .carousel-control-prev-icon {
+            background-color: black;
         }
 
-        .dropbtn {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
+        .carousel-control-next-icon {
+            background-color: black;
+        }
+        
+        #form-pesquisa {
             display: flex;
             align-items: center;
-            padding: 10px;
-            border-radius: 50%;
-            transition: background-color 0.3s;
         }
 
-        .dropbtn:hover {
-            background-color: rgba(0, 0, 0, 0.1);
+        #form-pesquisa .logo {
+            margin-right: 10px;
         }
 
-        .botoesHeader {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
         }
 
+        #search-input {
+            width: 326px;
+            padding-right: 35px;
+            /* espaço para o ícone de pesquisa */
+        }
+
+        .btn-custom.fa-search {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #102B7B;
+        }
+        
         .dropdown {
             position: relative;
             display: inline-block;
@@ -399,8 +415,10 @@
         }
 
         .dropdown-content a {
-            color: #333;
             padding: 12px 16px;
+            color: #102B7B ;
+            font-weight: bold;
+            transition: color 0.3s ease;
             text-decoration: none;
             display: block;
             transition: background-color 0.3s, color 0.3s;
@@ -427,36 +445,6 @@
             }
         }
 
-        #form-pesquisa {
-            display: flex;
-            align-items: center;
-        }
-
-        #form-pesquisa .logo {
-            margin-right: 10px;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        #search-input {
-            width: 326px;
-            padding-right: 35px;
-            /* espaço para o ícone de pesquisa */
-        }
-
-        .btn-custom.fa-search {
-            position: absolute;
-            right: 10px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            color: #102B7B;
-        }
     </style>
 </head>
 <header>
@@ -483,10 +471,10 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="{{ route('profile.edit') }}">Editar seu Perfil</a>
-                        <a href="{{ url('') }}">Meus pedidos</a>
+                        <a href="{{ url('dashboard') }}">Meus pedidos</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a :href="route('logout')" onclick="event.preventDefault();
+                            <a href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 Sair</a>
 
@@ -494,17 +482,20 @@
                     </div>
                 </div>
                 @else
-                <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                <div class="links-container">
+                <a href="{{ route('login') }}" class="link-a" id="link-a">
                     Log in
                 </a>
-
+                </div>
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Register
+                <a href="{{ route('register') }}" class="link-a">
+                    Cadastro
                 </a>
+               
                 @endif
                 @endauth
                 @endif
+          
             </div>
             <a type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></></a>
 

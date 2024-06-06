@@ -1,23 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brinquedo</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <title>Finalizar Compra</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
+        html,
         body {
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            height: 100%;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #43ADDA 10%, transparent 10%),
+                radial-gradient(circle, #FFA800 10%, transparent 10%),
+                radial-gradient(circle, #EFEBEB 10%, transparent 10%);
+            background-position: 0 0, 50px 50px, 100px 100px;
+            background-size: 150px 150px;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        hr {
+            border-color: #102B7B;
         }
 
         h2 {
@@ -25,166 +41,82 @@
             text-align: center;
             font-size: 30px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            margin-top: 20px;
+        }
+        h3 {
+            color: #102B7B;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-size: 30px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
 
-        /* Linha header */
+
         .line {
             background-color: #43ADDA;
             width: 100%;
             height: 35px;
         }
 
-        hr {
-            border-color: #102B7B;
-        }
 
-        /* logo */
         .logo {
             height: 75px;
             width: 75px;
         }
 
+
         .botoesHeader {
             width: 50px;
         }
 
-        /* navbar */
-        .navBar {
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
+
+        hr {
+            border-color: #102B7B;
         }
 
-        .navBar a,
-        .navBar .dropdown-toggle {
-            color: #102B7B !important;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
 
-        .navBar a:hover,
-        .navBar .dropdown-toggle:hover {
-            color: #43ADDA !important;
-            /* Yellow text color on hover */
-        }
 
-        .dropdown-menu {
-            background-color: #ededed;
-            /* Blue background for dropdown */
-            border: none;
-        }
-
-        .dropdown-menu a {
-            color: #102B7B !important;
-            /* White text color for dropdown items */
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #102B7B !important;
-            /* Darker blue on hover */
-        }
-
-        @media (max-width: 768px) {
-            .navBar {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .navBar a,
-            .navBar .dropdown-toggle {
-                margin-bottom: 10px;
-            }
-        }
-
-        /* produto */
-        .info_produto {
+        /* resumo da compra */
+        .resumo {
             display: flex;
-            flex-direction: column;
-            float: right;
-            margin-right: 350px;
-            margin-top: -300px;
+            justify-content: space-between;
         }
 
-        /* pagamento */
-        .pagamentos {
-            display: flex;
-            gap: 10px;
-            margin-left: 715px;
-            margin-top: -100px;
-        }
-
-        /* 'Adicionar ao Carrinho' */
-        .adicionar {
-            background-color: orange;
-            width: 200px;
-            height: 40px;
-            border-radius: 10px;
-            text-align: left;
-            margin-left: 200px;
-        }
-
-        /* descrição do produto */
-        .descricao {
-            width: 650px;
-            height: 200px;
-            background-color: bisque;
-            display: flex;
-            margin-top: 100px;
-            margin-left: 330px;
-            border-radius: 10px;
-        }
-
-        /* card do produto */
-        .card_produto {
-            margin-left: 300px;
-            border: none;
-            height: 400px;
-            width: 1000px;
-            margin-top: 30px;
-            padding-bottom: 30px;
-        }
-
-        .card-title {
-            font-size: 25px;
-            text-transform: uppercase;
-        }
-
-        .card-text {
-            font-size: 22px;
-        }
-
-        .title-desc {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .card_produto img {
-            width: 300px;
+        .endereco_entrega {
+            margin-left: 50px;
             padding-bottom: 20px;
         }
 
-        /* botões de quantidade */
-        .btn_adicionar {
+        /* para poder manter do lado de finalizar */
+        .finalizar-compra-container {
             display: flex;
-            flex-direction: row;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0 50px;
         }
 
-        /* Estilos para o card do corpo do produto */
-        .card-body2 {
-            width: 100%;
-            height: 250px;
-            background-color: #ededed;
-            border-radius: 5px;
-            border: none;
-            gap: 10px;
-            margin-top: 50px;
-            text-align: justify;
+        /* resumo da compra fim */
+
+        /* método de pagamento */
+        .dropdown-pagamento {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            margin-left: 700px;
         }
 
-        /* footer */
+        .dropdown-pagamento .col {
+            margin-bottom: 10px;
+        }
+
+        .bloco2 {
+            position: absolute;
+            text-align: center;
+        }
+
+        /* método de pagamento */
+
+        /* Estilos para o footer */
         footer {
             background-color: #43adda;
             height: 200px;
@@ -193,17 +125,20 @@
             margin-top: 30px;
         }
 
+        /* Estilos para imagens no footer */
         .imgFooter {
             width: 200px;
             height: 200px;
             position: relative;
         }
 
+        /* Estilos para ícones de redes sociais */
         .redesImg {
             width: 50px;
             height: 50px;
         }
 
+        /* Estilos para o bloco de formas de pagamento */
         .pagamento {
             position: absolute;
             margin-top: 40px;
@@ -221,56 +156,22 @@
             gap: 20px;
         }
 
-        /* carrossel de imagens */
-        .carousel-item img {
-            width: auto;
-            height: 350px;
-            object-fit: fill;
-        }
-
-        /*CSS CARD SARA*/
-
-        .img-top {
-            width: 150px;
-            height: 150px;
-            align-items: center;
-            justify-content: center;
-            display: flex;
+        .btn-finish {
             margin-left: 10px;
-            margin-top: 5px;
-        }
-
-        .card-titlee {
-            font-size: 12px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            padding: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 150px;
-        }
-
-        .card-textt {
-            font-size: 14px;
-            font-family: 'Times New Roman', Times, serif;
-            display: flex;
-            padding-left: 5px;
-            margin-top: 2px;
-        }
-
-        .cardd {
-            background-color: white;
-            text-align: center;
-            margin: 10px;
-        }
-
-        .card-precoo {
+            margin-right: 10px;
+            background-color: #fff;
+            border-color: #432075;
             color: #432075;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-weight: bold;
+            position: relative;
+            width: 300px;
+        }
+
+        .btn-finish:hover {
+            background-color: #432075;
+            top: -2px;
+            border-bottom: 2px solid #432075;
+            color: #fff;
         }
 
         .custom-btn {
@@ -288,58 +189,15 @@
             border-bottom: 2px solid #102B7B;
         }
 
-        .btn-custom {
-            background-color: #432075;
-            color: white;
+        .btn-success{
+            width: 100%;
         }
 
-        .btn-custom:hover {
-            background-color: #102B7B;
-            top: -2px;
-            border-bottom: 2px solid #102B7B;
+        .endereco{
+            padding-right: 200px;
         }
 
-
-
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-left: 700px;
-        }
-
-        .dropbtn {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .dropbtn:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .botoesHeader {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
+        
         .dropdown {
             position: relative;
             display: inline-block;
@@ -439,8 +297,84 @@
             font-size: 18px;
             color: #102B7B;
         }
+
+        .navBar {
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navBar a,
+        .navBar {
+            color: #102B7B !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .navBar a:hover,
+        .navBar .dropdown-toggle:hover {
+            color: #43ADDA !important;
+        }
+
+        .dropdown-menu {
+            background-color: white;
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .dropdown-menu a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-menu a:hover {           
+         background-color: #102B7B;
+            color: white !important;
+
+        }
+
+        @media (max-width: 768px) {
+            .navBar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navBar a,
+            .navBar .dropdown-toggle {
+                margin-bottom: 10px;
+            }
+        }
+
+        .link-a {
+            color: #102B7B;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            margin: 0 20px;
+            margin-left: 665px;
+        }
+
+        .link-a:hover {
+            color: #43ADDA;
+            text-decoration: none;
+
+        }
+        a{
+            color: #102B7B;
+        }
+        a:hover{
+            color: #432075;
+            text-decoration: none;
+        }
     </style>
 </head>
+
+<body>
 <header>
     <nav x-data="{ open: false }">
         <div class="line">
@@ -465,10 +399,10 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="{{ route('profile.edit') }}">Editar seu Perfil</a>
-                        <a href="{{ url('') }}">Meus pedidos</a>
+                        <a href="{{ url('dashboard') }}">Meus pedidos</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a :href="route('logout')" onclick="event.preventDefault();
+                            <a href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 Sair</a>
 
@@ -476,19 +410,22 @@
                     </div>
                 </div>
                 @else
-                <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                <div class="links-container">
+                <a href="{{ route('login') }}" class="link-a" id="link-a">
                     Log in
                 </a>
-
+                </div>
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Register
+                <a href="{{ route('register') }}" class="link-a">
+                    Cadastro
                 </a>
+               
                 @endif
                 @endauth
                 @endif
+          
             </div>
-            <a type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></h></a>
+            <a type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></></a>
 
         </div>
     </nav>
@@ -510,67 +447,146 @@
     </div>
     <hr>
     </nav>
+    
     </header>
-    <div class="container">
-        <h2 class="mt-5 mb-5">Finalizar Compra</h2>
+    <div class="container mt-5">
+        <h2>Finalizar Pedido</h2>
 
-        <!-- Resumo da compra -->
-        <div class="d-flex">
-            <div class="bloco-resumo">
-                <div class="card text-center card mb-3" style="width: 300px;">
-                    <h3 class="card-header">Resumo da compra</h3>
-                    <div class="card-body">
-                        <div class="resumo">
-                            <p class="card-text">QTD:</p>
-                            <p class="card-text">{{ $quantidadeTotal }}</p>
+        <form action="{{ route('pedido.finalizar') }}" method="POST">
+            @csrf
+            <div class="row">
+
+                <div class="col-md-8 endereco">
+                    <!-- Lista de Endereços -->
+                    <h2 class="mt-5">Endereço de Entrega</h2>
+                    @if($enderecos->isEmpty())
+                    <p>Você não tem endereços cadastrados.</p>
+                    @else
+                    <div class="form-group">
+                        @foreach($enderecos as $endereco)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="endereco_id" value="{{ $endereco->ENDERECO_ID }}" id="endereco{{ $endereco->ENDERECO_ID }}" required>
+                            <label class="form-check-label" for="endereco{{ $endereco->ENDERECO_ID }}">
+                                {{ $endereco->ENDERECO_LOGRADOURO }}, {{ $endereco->ENDERECO_NUMERO }} - {{ $endereco->ENDERECO_CIDADE }}, {{ $endereco->ENDERECO_ESTADO }} - CEP: {{ $endereco->ENDERECO_CEP }}
+                            </label>
                         </div>
-                        <div class="resumo">
-                            <p class="card-text">Preço:</p>
-                            <p class="card-text">R$ {{ number_format($valorTotal, 2, ',', '.') }}</p>
+                        @endforeach
+                    </div>
+                    @endif
+
+                    <!-- Método de Pagamento -->
+                    <h2 class="mt-5">Método de Pagamento</h2>
+                    <div class="accordion" id="paymentMethods">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingPix">
+                                <button class="btn btn-primary custom-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePix" aria-expanded="true" aria-controls="collapsePix">
+                                    <i class="bi bi-currency-exchange"></i> PIX
+                                </button>
+                            </h2>
+                            <div id="collapsePix" class="accordion-collapse collapse show" aria-labelledby="headingPix" data-bs-parent="#paymentMethods">
+                                <div class="accordion-body text-center">
+                                    <!-- Conteúdo do PIX -->
+                                    <p>Use o QR code abaixo para pagar com PIX:</p>
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=EXAMPLEPIX" alt="QR Code PIX">
+                                </div>
+                            </div>
                         </div>
-                        <div class="resumo">
-                            <p class="card-text">Frete:</p>
-                            <p>R$ 0</p>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBoleto">
+                                <button class="btn btn-primary custom-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBoleto" aria-expanded="false" aria-controls="collapseBoleto">
+                                    <i class="bi bi-file-earmark-text"></i> Boleto Bancário
+                                </button>
+                            </h2>
+                            <div id="collapseBoleto" class="accordion-collapse collapse" aria-labelledby="headingBoleto" data-bs-parent="#paymentMethods">
+                                <div class="accordion-body text-center">
+                                    <!-- Conteúdo do Boleto Bancário -->
+                                    <p>Use o código de barras abaixo para pagar com Boleto Bancário:</p>
+                                    <img src="https://fakeimg.pl/350x80/?text=1234.5678.9123.4567.8901.2345.6789.123456" alt="Código de Barras Boleto">
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="resumo">
-                            <p class="card-text">Total:</p>
-                            <p class="card-text">R$ {{ number_format($valorTotal, 2, ',', '.') }}</p>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCredito">
+                                <button class="btn btn-primary custom-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCredito" aria-expanded="false" aria-controls="collapseCredito">
+                                    <i class="bi bi-credit-card"></i> Cartão de Crédito
+                                </button>
+                            </h2>
+                            <div id="collapseCredito" class="accordion-collapse collapse" aria-labelledby="headingCredito" data-bs-parent="#paymentMethods">
+                                <div class="accordion-body">
+                                    <!-- Conteúdo do Cartão de Crédito -->
+                                    <div class="mb-3">
+                                        <label for="cardName" class="form-label">Nome no Cartão</label>
+                                        <input type="text" class="form-control" id="cardName" name="cardName" placeholder="Nome como aparece no cartão">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cardNumber" class="form-label">Número do Cartão</label>
+                                        <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Número do cartão">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cardExpiry" class="form-label">Data de Validade</label>
+                                            <input type="text" class="form-control" id="cardExpiry" name="cardExpiry" placeholder="MM/AA">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cardCVC" class="form-label">Código de Segurança (CVC)</label>
+                                            <input type="text" class="form-control" id="cardCVC" name="cardCVC" placeholder="CVC">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Lista de endereços -->
-            <div class="ml-5">
-
-                <form action="{{ route('pedido.finalizar') }}" method="POST">
-                    <div class="d-flex">
-                        <div class="conteiner mr-5">
-                            <h3>Escolha um Endereço para a Entrega</h3>
-                            @csrf
-
-                            <div class="form-group">
-                                @foreach($enderecos as $endereco)
-                                <hr>
-                                <div class="form-check ">
-                                    <input class="form-check-input" type="radio" name="endereco_id" id="endereco{{ $endereco->ENDERECO_ID }}" value="{{ $endereco->ENDERECO_ID }}" required>
-                                    <label class="form-check-label" for="endereco{{ $endereco->ENDERECO_ID }}">
-                                        {{ $endereco->ENDERECO_LOGRADOURO }}, {{ $endereco->ENDERECO_NUMERO }}{{ $endereco->ENDERECO_COMPLEMENTO ? ', ' . $endereco->ENDERECO_COMPLEMENTO : '' }} - {{ $endereco->ENDERECO_CEP }}, {{ $endereco->ENDERECO_CIDADE }} - {{ $endereco->ENDERECO_ESTADO }}
-                                    </label>
-                                </div>
-                                @endforeach
-                                <hr>
-                            </div>
+                <div class="col-md-4">
+                    <!-- Resumo da Compra -->
+                    <h2 class="mt-5">Resumo da Compra</h2>
+                    <div class="card">
+                        <div class="card-header">Resumo</div>
+                        <div class="card-body">
+                            <p class="card-text"><strong>Quantidade de Itens:</strong> {{ $quantidadeTotal }}</p>
+                            <p class="card-text"><strong>Preço:</strong> R$ {{ number_format($valorTotal, 2, ',', '.') }}</p>
+                            <p class="card-text"><strong>Frete:</strong> R$ 0,00</p>
+                            <hr>
+                            <p class="card-text"><strong>Total:</strong> R$ {{ number_format($valorTotal, 2, ',', '.') }}</p>
                         </div>
-                        <button type="submit" class="btn btn-finish">Finalizar Pedido</button>
                     </div>
-                </form>
+                    <button type="submit" class="btn btn-success btn-lg mt-3">Finalizar Compra</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
 
+    <footer class="d-flex">
+        <img class="imgFooter" src="{{asset('logo.png')}}" alt="">
+        <div class="redesSociais">
+            <p class="mt-3">Acompanhe nossas redes sociais</p>
+            <div class="d-flex">
+                <a href=""><img class="redesImg" src="{{asset('insta.png')}}" alt=""></a>
+                <a href=""><img class="redesImg" src="{{asset('wpp.png')}}" alt=""></a>
+                <a href=""><img class="redesImg" src="{{asset('face.png')}}" alt=""></a>
+                <a href=""><img class="redesImg" src="{{asset('linked.png')}}" alt=""></a>
+            </div>
+            <p>Fale Conosco</p>
+            <p>Troca e Devolução</p>
+        </div>
+        <div class="pagamento">
+            <p>Formas de Pagamento</p>
+            <div class="d-flex">
+                <img class="pagamentoImg" src="{{asset('cartao.png')}}" alt="">
+                <img class="pagamentoImg" src="{{asset('boleto.png')}}" alt="">
+                <img class="pagamentoImg" src="{{asset('pix.png')}}" alt="">
+            </div>
+            <div class="d-flex pagamentoTxt">
+                <p>Cartão</p>
+                <p>Boleto</p>
+                <p>Pix</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

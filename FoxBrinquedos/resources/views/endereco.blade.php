@@ -1,23 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brinquedo</title>
+    <title>Fox</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        html,
         body {
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            height: 100%;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #43ADDA 10%, transparent 10%),
+                radial-gradient(circle, #FFA800 10%, transparent 10%),
+                radial-gradient(circle, #EFEBEB 10%, transparent 10%);
+            background-position: 0 0, 50px 50px, 100px 100px;
+            background-size: 150px 150px;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        hr {
+            border-color: #102B7B;
         }
 
         h2 {
@@ -25,178 +46,49 @@
             text-align: center;
             font-size: 30px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            margin-top: 20px;
         }
 
-        /* Linha header */
         .line {
             background-color: #43ADDA;
-            width: 100%;
             height: 35px;
         }
 
-        hr {
-            border-color: #102B7B;
-        }
-
-        /* logo */
         .logo {
             height: 75px;
             width: 75px;
+        }
+
+        .logo1 {
+            width: 150px;
+        }
+
+        .card {
+            height: auto;
+            width: 175px;
+            border-radius: 15px;
+            background-color: #444;
         }
 
         .botoesHeader {
             width: 50px;
         }
 
-        /* navbar */
-        .navBar {
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .navBar a,
-        .navBar .dropdown-toggle {
-            color: #102B7B !important;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        .navBar a:hover,
-        .navBar .dropdown-toggle:hover {
-            color: #43ADDA !important;
-            /* Yellow text color on hover */
-        }
-
-        .dropdown-menu {
-            background-color: #ededed;
-            /* Blue background for dropdown */
-            border: none;
-        }
-
-        .dropdown-menu a {
-            color: #102B7B !important;
-            /* White text color for dropdown items */
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #102B7B !important;
-            /* Darker blue on hover */
-        }
-
-        @media (max-width: 768px) {
-            .navBar {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .navBar a,
-            .navBar .dropdown-toggle {
-                margin-bottom: 10px;
-            }
-        }
-
-        /* produto */
-        .info_produto {
-            display: flex;
-            flex-direction: column;
-            float: right;
-            margin-right: 350px;
-            margin-top: -300px;
-        }
-
-        /* pagamento */
-        .pagamentos {
-            display: flex;
-            gap: 10px;
-            margin-left: 715px;
-            margin-top: -100px;
-        }
-
-        /* 'Adicionar ao Carrinho' */
-        .adicionar {
-            background-color: orange;
-            width: 200px;
-            height: 40px;
-            border-radius: 10px;
-            text-align: left;
-            margin-left: 200px;
-        }
-
-        /* descrição do produto */
-        .descricao {
-            width: 650px;
-            height: 200px;
-            background-color: bisque;
-            display: flex;
-            margin-top: 100px;
-            margin-left: 330px;
-            border-radius: 10px;
-        }
-
-        /* card do produto */
-        .card_produto {
-            margin-left: 300px;
-            border: none;
-            height: 400px;
-            width: 1000px;
-            margin-top: 30px;
-            padding-bottom: 30px;
-        }
-
-        .card-title {
-            font-size: 25px;
-            text-transform: uppercase;
-        }
-
-        .card-text {
-            font-size: 22px;
-        }
-
-        .title-desc {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .card_produto img {
-            width: 300px;
-            padding-bottom: 20px;
-        }
-
-        /* botões de quantidade */
-        .btn_adicionar {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-
-        /* Estilos para o card do corpo do produto */
-        .card-body2 {
-            width: 100%;
-            height: 250px;
-            background-color: #ededed;
-            border-radius: 5px;
-            border: none;
-            gap: 10px;
-            margin-top: 50px;
-            text-align: justify;
-        }
-
-        /* footer */
         footer {
             background-color: #43adda;
             height: 200px;
             border-top-right-radius: 35px;
             border-top-left-radius: 35px;
-            margin-top: 30px;
         }
 
         .imgFooter {
             width: 200px;
             height: 200px;
             position: relative;
+        }
+
+        .redesSociais {
+            position: relative;
+            height: 150px;
         }
 
         .redesImg {
@@ -221,16 +113,9 @@
             gap: 20px;
         }
 
-        /* carrossel de imagens */
-        .carousel-item img {
-            width: auto;
-            height: 350px;
-            object-fit: fill;
-        }
 
-        /*CSS CARD SARA*/
 
-        .img-top {
+        .card-img-top {
             width: 150px;
             height: 150px;
             align-items: center;
@@ -240,7 +125,7 @@
             margin-top: 5px;
         }
 
-        .card-titlee {
+        .card-title {
             font-size: 12px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             padding: 2px;
@@ -250,21 +135,22 @@
             max-width: 150px;
         }
 
-        .card-textt {
+        .card-text {
             font-size: 14px;
             font-family: 'Times New Roman', Times, serif;
             display: flex;
             padding-left: 5px;
             margin-top: 2px;
+
         }
 
-        .cardd {
+        .card {
             background-color: white;
             text-align: center;
             margin: 10px;
         }
 
-        .card-precoo {
+        .card-preco {
             color: #432075;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: 18px;
@@ -288,56 +174,14 @@
             border-bottom: 2px solid #102B7B;
         }
 
-        .btn-custom {
-            background-color: #432075;
-            color: white;
+        .pagination {
+            justify-content: center;
         }
 
-        .btn-custom:hover {
-            background-color: #102B7B;
-            top: -2px;
-            border-bottom: 2px solid #102B7B;
-        }
+        .link {
+            margin: 20px;
+            left: 400px;
 
-
-
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-left: 700px;
-        }
-
-        .dropbtn {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .dropbtn:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .botoesHeader {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
         }
 
         .dropdown {
@@ -439,12 +283,111 @@
             font-size: 18px;
             color: #102B7B;
         }
+
+        .navBar {
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navBar a,
+        .navBar {
+            color: #102B7B !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .navBar a:hover,
+        .navBar .dropdown-toggle:hover {
+            color: #43ADDA !important;
+        }
+
+        .dropdown-menu {
+            background-color: white;
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .dropdown-menu a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-menu a:hover {           
+         background-color: #102B7B;
+            color: white !important;
+
+        }
+
+        @media (max-width: 768px) {
+            .navBar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navBar a,
+            .navBar .dropdown-toggle {
+                margin-bottom: 10px;
+            }
+        }
+
+        .link-a {
+            color: #102B7B;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            margin: 0 20px;
+            margin-left: 665px;
+        }
+
+        .link-a:hover {
+            color: #43ADDA;
+            text-decoration: none;
+
+        }
+        a{
+            color: #102B7B;
+        }
+        a:hover{
+            color: #432075;
+            text-decoration: none;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: black;
+        }
+
+        .btn-primary {
+            background-color: #432075;
+            border-color: #432075;
+        }
+
+        .btn-primary:hover {
+            background-color: #102B7B;
+            border-color: #102B7B;
+        }
+
     </style>
 </head>
 
 <body>
-
-
+<header>
     <nav x-data="{ open: false }">
         <div class="line">
         </div>
@@ -468,10 +411,10 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="{{ route('profile.edit') }}">Editar seu Perfil</a>
-                        <a href="{{ url('') }}">Meus pedidos</a>
+                        <a href="{{ url('dashboard') }}">Meus pedidos</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a :href="route('logout')" onclick="event.preventDefault();
+                            <a href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 Sair</a>
 
@@ -479,17 +422,20 @@
                     </div>
                 </div>
                 @else
-                <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                <div class="links-container">
+                <a href="{{ route('login') }}" class="link-a" id="link-a">
                     Log in
                 </a>
-
+                </div>
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Register
+                <a href="{{ route('register') }}" class="link-a">
+                    Cadastro
                 </a>
+               
                 @endif
                 @endauth
                 @endif
+          
             </div>
             <a type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></></a>
 
@@ -512,23 +458,8 @@
         <a class="d-flex mr-3 nav-link" href="{{route('contato.index')}}">CONTATO</a>
     </div>
     <hr>
-    <hr>
-    <div class="d-flex justify-content-center mb-2 mt-2 navBar">
-        <a class="d-flex mr-3 nav-link" href="{{route('index')}}">HOME</a>
-        <a class="d-flex mr-3 nav-link" href="{{route('produto.index')}}">BRINQUEDOS</a>
-        <a class="nav-link dropdown-toggle" href="#" id="categoriaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            CATEGORIA
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="categoriaDropdown">
-            @foreach(\App\Models\Categoria::where('CATEGORIA_ATIVO', 1)->get() as $categoriaItem)
-            <a class="dropdown-item" href="{{ route('categoria', ['categoria_nome' => $categoriaItem->CATEGORIA_NOME]) }}">
-                {{ $categoriaItem->CATEGORIA_NOME }}
-            </a>
-            @endforeach
-        </ul>
-        <a class="d-flex mr-3 nav-link" href="{{route('contato.index')}}">CONTATO</a>
-    </div>
-    <hr>
+    </nav>
+    
     </header>
     <h2>Insira seu Endereço</h2>
 

@@ -340,6 +340,7 @@
             border-radius: 50%;
         }
 
+
         .dropdown {
             position: relative;
             display: inline-block;
@@ -439,12 +440,80 @@
             font-size: 18px;
             color: #102B7B;
         }
+
+        .navBar {
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navBar a,
+        .navBar {
+            color: #102B7B !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .navBar a:hover,
+        .navBar .dropdown-toggle:hover {
+            color: #43ADDA !important;
+        }
+
+        .dropdown-menu {
+            background-color: white;
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .dropdown-menu a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-menu a:hover {           
+         background-color: #102B7B;
+            color: white !important;
+
+        }
+
+        @media (max-width: 768px) {
+            .navBar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navBar a,
+            .navBar .dropdown-toggle {
+                margin-bottom: 10px;
+            }
+        }
+
+        .link-a {
+            color: #102B7B;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            margin: 0 20px;
+            margin-left: 665px;
+        }
+
+        .link-a:hover {
+            color: #43ADDA;
+            text-decoration: none;
+
+        }
+
+
     </style>
 </head>
 
 <body>
-
-
+<header>
     <nav x-data="{ open: false }">
         <div class="line">
         </div>
@@ -468,10 +537,10 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="{{ route('profile.edit') }}">Editar seu Perfil</a>
-                        <a href="{{ url('') }}">Meus pedidos</a>
+                        <a href="{{ url('dashboard') }}">Meus pedidos</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a :href="route('logout')" onclick="event.preventDefault();
+                            <a href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 Sair</a>
 
@@ -479,17 +548,20 @@
                     </div>
                 </div>
                 @else
-                <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                <div class="links-container">
+                <a href="{{ route('login') }}" class="link-a" id="link-a">
                     Log in
                 </a>
-
+                </div>
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Register
+                <a href="{{ route('register') }}" class="link-a">
+                    Cadastro
                 </a>
+               
                 @endif
                 @endauth
                 @endif
+          
             </div>
             <a type="button"><img class="botoesHeader" src="{{asset('cart.png')}}" alt=""></></a>
 
@@ -512,9 +584,9 @@
         <a class="d-flex mr-3 nav-link" href="{{route('contato.index')}}">CONTATO</a>
     </div>
     <hr>
-        </nav>
+    </nav>
+    
     </header>
-
 
     <div class="container mt-4 mb-3">
         <div class="card text-center">
